@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>在 Ubuntu 上部署 Django 项目 | 个人博客</title>
+    <title>个人博客 - 前后端分离 | 个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="" />
     <meta name="author" content="天宇" />
@@ -62,7 +62,7 @@
           <div class="nav-collapse">
             <ul class="nav">
                 <li class="divider-vertical"></li>
-                <li class="active">
+                <li >
                   <a href="http://blog.apie.site/category/python.html">
 						        <i class="icon-folder-open icon-large"></i>Python
 					         </a>
@@ -88,97 +88,39 @@
         <div class="span8" id="content">
 <div class="row">
     <div class="span2">
-        <div class="well">
-<footer class="post-info">
-<abbr class="published" title="2019-10-25T23:59:00+08:00">
-    <i class="icon-calendar"></i>&nbsp;周五 25 十月 2019
+        <div class="well small"><footer class="post-info">
+<abbr class="published" title="2018-01-29T19:12:07+08:00">
+    <i class="icon-calendar"></i>&nbsp;周一 29 一月 2018
 </abbr>
-<br/><a href="http://blog.apie.site/author/xin.html"><i class="icon-user"></i>&nbsp;xin</a>
+<br/><a href="http://blog.apie.site/author/tian-yu.html"><i class="icon-user"></i>&nbsp;天宇</a>
 
 
 <br/>
-	&nbsp;&nbsp;<a href="http://blog.apie.site/tag/django.html" class="label"><i class="icon-tag"></i>&nbsp;Django</a>
-</footer><!-- /.post-info -->        </div>
+	&nbsp;&nbsp;<a href="http://blog.apie.site/tag/qian-hou-duan-fen-chi.html" class="label"><i class="icon-tag"></i>&nbsp;前后端分离</a>
+	&nbsp;&nbsp;<a href="http://blog.apie.site/tag/token.html" class="label"><i class="icon-tag"></i>&nbsp;token</a>
+</footer><!-- /.post-info --></div>
     </div>
     <div class="span6">
-<section id="content" class="well">
-    <article>
-        <header>
-            <h1>
-                <a href=""
-                        rel="bookmark"
-                        title="Permalink to 在 Ubuntu 上部署 Django 项目">
-                        在 Ubuntu 上部署 Django 项目
-                </a>
-            </h1>
-        </header>
-        <div class="entry-content">
-
-        <h2>部署前准备</h2>
-<p>需要安装 pip、apache2、和 libapache2-mod-wsgi</p>
-<p>如果 Python 版本是 2.0 版本，使用 apt 安装三个软件：</p>
-<div class="highlight"><pre><span></span>sudo apt-get install python-pip apache2 libapache2-mod-wsgi
-</pre></div>
-
-
-<p>如果 Python 版本是 3.0 版本，运行如下命令：</p>
-<div class="highlight"><pre><span></span>sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
-</pre></div>
-
-
-<blockquote>
-<p>主要注意 mod-wsgi 和 Python 对应版本。</p>
-</blockquote>
-<h2>开始部署</h2>
-<p>假设，已经有了完成的 Django 项目，项目的名字叫做 mysite</p>
-<h3>在 apache2 的网站配置文件夹中，新建 <strong>mysite.conf</strong></h3>
-<blockquote>
-<p>/etc/apache2/sites-available/youproject.conf</p>
-</blockquote>
-<p>编辑文件内容：</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>
-
-    <span class="nt">&lt;Directory</span> <span class="err">/var/www/html/projects/venv/mysite/mysite</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;Files</span> <span class="err">wsgi.py</span><span class="nt">&gt;</span>
-            Require all granted
-        <span class="nt">&lt;/Files&gt;</span>
-    <span class="nt">&lt;/Directory&gt;</span>
-
-    WSGIDaemonProcess mysite python-path=/var/www/html/projects/venv/mysite python-home=/var/www/html/projects/venv
-    WSGIProcessGroup mysite
-    WSGIScriptAlias / /var/www/html/projects/venv/mysite/mysite/wsgi.py
-<span class="nt">&lt;/VirtualHost&gt;</span>
-</pre></div>
-
-
-<p>下面详细说明参数的含义：</p>
+        <div class="article well">
+            <h1><a href="http://blog.apie.site/jwt.html">JWT</a></h1>
+            <div class="summary"><h2>什么是 JWT</h2>
+<p>JWT 是 JSON Web Token 的缩写。</p>
+<p>首先，JWT 是一个 token。</p>
+<p>JWT 是一个标准 <a href="https://tools.ietf.org/html/rfc7519"><strong>RFC 7519</strong></a>。定义了使用<strong>紧凑</strong>、<strong>自我描述</strong>的方式在服务端、客户端之间<strong>安全</strong>使用 JSON 传输信息的标准。</p>
+<p>简答的说，JWT 就是定义了如何生成 token 的标准。</p>
+<p>下面详细的解释下 JWT 定义的几个重要的关键词。</p>
 <ul>
-<li>要确保有对 wsgi.py 的访问权限 </li>
-<li>WSGIDaemonProcess WSGIProcessGroup 两个参数都是 <strong>mysite</strong>，这里的 mysite 是 Apache 在服务 Django 应用程序时将引用的进程组的名称，所以这两个名称应该是一样的。</li>
-<li>python-path 这个参数应该是指向 Django 项目的根目录</li>
-<li>python-home 指向的是 Python venv 的目录</li>
-<li>WSGIScriptAlias 参数告诉 apache 服务器，访问网页根目录，将导向到 wsgi.py 文件</li>
-</ul>
-<p>保存上面的文件，激活该配置；</p>
-<div class="highlight"><pre><span></span>a2ensite /etc/apache2/sites-available/youproject.conf
-</pre></div>
+<li>紧凑：因为 JWT 数据量小的特性。JWT 可以通过拼接在URL、POST 或者 HTTP 头信息中传递。同样，因为数据量比较小，所以传输的效率也会很快。</li>
+<li>自我描述：JWT 携带的数据包括了所有关于用户的信息。这避免了服务端多次查询数据库所造成的性能损失 …</li></ul>
+                <a class="btn btn-small" href="http://blog.apie.site/jwt.html">more ...</a>
+            </div>
+        </div>
+    </div>
+    <div class="span8">
+        <hr />
+    </div>
 
-
-<p>测试配置是否正确：</p>
-<div class="highlight"><pre><span></span>apachectl configtest
-</pre></div>
-
-
-<p>如果配置正确无误，重启 apache2 服务器，完成网站部署：</p>
-<div class="highlight"><pre><span></span>service apache2 restart
-</pre></div>
-
-
-<h2>说明</h2>
-<p>如果碰到权限问题，请使用 sudo 命令。</p>
-        </div><!-- /.entry-content -->
-    </article>
-</section>
+<div class="span6">
 </div>
 </div>
         </div><!--/span-->
