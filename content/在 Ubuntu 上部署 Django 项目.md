@@ -3,7 +3,7 @@ Date: 2019-10-25 23:59
 Category: Python
 Authors: xin
 Tags: Django
-Summary: Ubuntu 部署 Django 命令
+Summary: Ubuntu + Apache2 + mod_wsgi + Django 
 
 ## 部署前准备
 
@@ -42,7 +42,7 @@ Summary: Ubuntu 部署 Django 命令
         WSGIScriptAlias / /var/www/html/projects/venv/mysite/mysite/wsgi.py
     </VirtualHost>
 
-下面详细说明哥哥参数的含义：
+下面详细说明参数的含义：
 
 * 要确保有对 wsgi.py 的访问权限 
 * WSGIDaemonProcess WSGIProcessGroup 两个参数都是 **mysite**，这里的 mysite 是 Apache 在服务 Django 应用程序时将引用的进程组的名称，所以这两个名称应该是一样的。
