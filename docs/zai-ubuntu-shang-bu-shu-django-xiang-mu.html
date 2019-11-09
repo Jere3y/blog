@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>在 Ubuntu 上部署 Django 项目 | 个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="天宇" />
+    <meta name="kittycheck_rumble" content="true" />
+    <meta name="kittycheck_position" content="top=60,right=60" />
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="https://apie.site/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="https://apie.site/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="https://apie.site/theme/css/font-awesome.css" rel="stylesheet">
+    <link href="https://apie.site/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="https://apie.site/theme/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://apie.site/theme/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://apie.site/theme/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://apie.site/theme/img/apple-touch-icon-114x114.png">
+
+    <link href="https://apie.site/" type="application/atom+xml" rel="alternate" title="个人博客 ATOM Feed" />
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://apie.site/index.html">个人博客 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li class="divider-vertical"></li>
+                <li class="active">
+                  <a href="https://apie.site/category/python.html">
+						        <i class="icon-folder-open icon-large"></i>Python
+					         </a>
+                </li>
+              <ul class="nav pull-right">
+                    <li><a href="https://apie.site/"><i class="icon-th-list"></i>Archives</a></li>
+              </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span8" id="content">
+<div class="row">
+    <div class="span2">
+        <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-10-25T23:59:00+08:00">
+    <i class="icon-calendar"></i>&nbsp;周五 25 十月 2019
+</abbr>
+<br/><a href="https://apie.site/author/xin.html"><i class="icon-user"></i>&nbsp;xin</a>
+
+
+<br/>
+	&nbsp;&nbsp;<a href="https://apie.site/tag/django.html" class="label"><i class="icon-tag"></i>&nbsp;Django</a>
+</footer><!-- /.post-info -->        </div>
+    </div>
+    <div class="span6">
+<section id="content" class="well">
+    <article>
+        <header>
+            <h1>
+                <a href=""
+                        rel="bookmark"
+                        title="Permalink to 在 Ubuntu 上部署 Django 项目">
+                        在 Ubuntu 上部署 Django 项目
+                </a>
+            </h1>
+        </header>
+        <div class="entry-content">
+
+        <h2>部署前准备</h2>
+<p>需要安装 pip、apache2、和 libapache2-mod-wsgi</p>
+<p>如果 Python 版本是 2.0 版本，使用 apt 安装三个软件：</p>
+<div class="highlight"><pre><span></span>sudo apt-get install python-pip apache2 libapache2-mod-wsgi
+</pre></div>
+
+
+<p>如果 Python 版本是 3.0 版本，运行如下命令：</p>
+<div class="highlight"><pre><span></span>sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
+</pre></div>
+
+
+<blockquote>
+<p>主要注意 mod-wsgi 和 Python 对应版本。</p>
+</blockquote>
+<h2>开始部署</h2>
+<p>假设，已经有了完成的 Django 项目，项目的名字叫做 mysite</p>
+<h3>在 apache2 的网站配置文件夹中，新建 <strong>mysite.conf</strong></h3>
+<blockquote>
+<p>/etc/apache2/sites-available/youproject.conf</p>
+</blockquote>
+<p>编辑文件内容：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;Directory</span> <span class="err">/var/www/html/projects/venv/mysite/mysite</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Files</span> <span class="err">wsgi.py</span><span class="nt">&gt;</span>
+            Require all granted
+        <span class="nt">&lt;/Files&gt;</span>
+    <span class="nt">&lt;/Directory&gt;</span>
+
+    WSGIDaemonProcess mysite python-path=/var/www/html/projects/venv/mysite python-home=/var/www/html/projects/venv
+    WSGIProcessGroup mysite
+    WSGIScriptAlias / /var/www/html/projects/venv/mysite/mysite/wsgi.py
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+
+<p>下面详细说明哥哥参数的含义：</p>
+<ul>
+<li>要确保有对 wsgi.py 的访问权限 </li>
+<li>WSGIDaemonProcess WSGIProcessGroup 两个参数都是 <strong>mysite</strong>，这里的 mysite 是 Apache 在服务 Django 应用程序时将引用的进程组的名称，所以这两个名称应该是一样的。</li>
+<li>python-path 这个参数应该是指向 Django 项目的根目录</li>
+<li>python-home 指向的是 Python venv 的目录</li>
+<li>WSGIScriptAlias 参数告诉 apache 服务器，访问网页根目录，将导向到 wsgi.py 文件</li>
+</ul>
+<p>保存上面的文件，激活该配置；</p>
+<div class="highlight"><pre><span></span>a2ensite /etc/apache2/sites-available/youproject.conf
+</pre></div>
+
+
+<p>测试配置是否正确：</p>
+<div class="highlight"><pre><span></span>apachectl configtest
+</pre></div>
+
+
+<p>如果配置正确无误，重启 apache2 服务器，完成网站部署：</p>
+<div class="highlight"><pre><span></span>service apache2 restart
+</pre></div>
+
+
+<h2>说明</h2>
+<p>如果碰到权限问题，请使用 sudo 命令。</p>
+        </div><!-- /.entry-content -->
+    </article>
+</section>
+</div>
+</div>
+        </div><!--/span-->
+        <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://apie.site/category/python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+    </div><!--/.fluid-container-->
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://apie.site/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="https://apie.site/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
