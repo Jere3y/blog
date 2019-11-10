@@ -9,7 +9,7 @@ SITEURL = 'http://blog.apie.site/'
 PATH = 'content'
 
 TIMEZONE = 'Asia/Harbin'
-
+DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 DEFAULT_LANG = 'en'
 OUTPUT_PATH = 'docs/'
 # Feed generation is usually not desired when developing
