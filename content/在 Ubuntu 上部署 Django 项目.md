@@ -1,7 +1,6 @@
 Title: 在 Ubuntu 上部署 Django 项目
 Date: 2019-10-25 23:59
 Category: Python
-Authors: xin
 Tags: Django
 Summary: Ubuntu + Apache2 + mod_wsgi + Django 
 

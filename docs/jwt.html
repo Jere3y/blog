@@ -96,7 +96,7 @@
         <div class="well">
 <footer class="post-info">
 <abbr class="published" title="2018-01-29T19:12:07+08:00">
-    <i class="icon-calendar"></i>&nbsp;周一 29 一月 2018
+    <i class="icon-calendar"></i>&nbsp;2018-01-29 19:12:07
 </abbr>
 <br/><a href="http://blog.apie.site/author/tian-yu.html"><i class="icon-user"></i>&nbsp;天宇</a>
 
@@ -151,10 +151,10 @@
 <p>下面详细的解释下各个组成部分：</p>
 <h3>头信息（Header）</h3>
 <p>头信息就是对 JWT 整体的描述。包括两个部分：1. 数据的类型（typ），就是 JWT。2. 签名使用的算法(alg)，像下面这样；</p>
-<div class="highlight"><pre><span></span>{
-    &quot;typ&quot;:&quot;JWT&quot;,
-    &quot;alg&quot;:&quot;HS256&quot;
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+    <span class="ss">&quot;typ&quot;</span><span class="p">:</span><span class="ss">&quot;JWT&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;alg&quot;</span><span class="p">:</span><span class="ss">&quot;HS256&quot;</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -167,11 +167,11 @@
 <li>私有 claim（Private claims）：这些是为了两方共享信息而自定义的 claims。既不是注册 claim 也不是公共 claim。</li>
 </ol>
 <p>一个荷载的样子应该是这样:</p>
-<div class="highlight"><pre><span></span>{
-    &quot;sub&quot;:&quot;1&quot;,
-    &quot;name&quot;:&quot;Jack&quot;,
-    &quot;admin&quot;:true
-}
+<div class="highlight"><pre><span></span><span class="err">{</span>
+    <span class="ss">&quot;sub&quot;</span><span class="p">:</span><span class="ss">&quot;1&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;name&quot;</span><span class="p">:</span><span class="ss">&quot;Jack&quot;</span><span class="p">,</span>
+    <span class="ss">&quot;admin&quot;</span><span class="p">:</span><span class="k">true</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -189,11 +189,11 @@
 </ol>
 <p>有了以上信息，就可以开始签名了。</p>
 <p>例如，如果要使用 HMAC SHA256 算法（密码是 secret）进行加密，代码如下：</p>
-<div class="highlight"><pre><span></span>HMACSHA256(
-    base64UrlEncode(header) + &quot;.&quot; +
-    base64UrlEncode(payload),
-    secret
-)
+<div class="highlight"><pre><span></span><span class="n">HMACSHA256</span><span class="p">(</span>
+    <span class="n">base64UrlEncode</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="ss">&quot;.&quot;</span> <span class="o">+</span>
+    <span class="n">base64UrlEncode</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
+    <span class="n">secret</span>
+<span class="p">)</span>
 </pre></div>
 
 
@@ -279,12 +279,17 @@
 
       <hr>
 
-    </div><!--/.fluid-container-->
+
+<footer>
+    <address id="about" style="text-align: center">
+      ©2017-2019 blog.apie.site 本站所有文章遵循 <a href="https://en.wikipedia.org/wiki/WTFPL" target="_blank">WTFPL</a>
+    </address><!-- /#about -->
+</footer>    </div><!--/.fluid-container-->
 
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://blog.apie.site/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://blog.apie.site/theme/js/bootstrap.min.js"></script>
   </body>
 </html>
