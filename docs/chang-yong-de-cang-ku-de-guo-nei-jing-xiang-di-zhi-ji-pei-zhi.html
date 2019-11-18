@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>常用的仓库的国内镜像地址及配置 | 个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="天宇" />
+    <meta name="kittycheck_rumble" content="true" />
+    <meta name="kittycheck_position" content="top=60,right=60" />
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://blog.apie.site/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://blog.apie.site/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="http://blog.apie.site/theme/css/font-awesome.css" rel="stylesheet">
+    <link href="http://blog.apie.site/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://blog.apie.site/theme/img/favicon.ico">
+    <link rel="apple-touch-icon" href="http://blog.apie.site/theme/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://blog.apie.site/theme/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://blog.apie.site/theme/img/apple-touch-icon-114x114.png">
+
+    <link href="http://blog.apie.site/" type="application/atom+xml" rel="alternate" title="个人博客 ATOM Feed" />
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://blog.apie.site/index.html">个人博客 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li class="divider-vertical"></li>
+                <li >
+                  <a href="http://blog.apie.site/category/python.html">
+						        <i class="icon-folder-open icon-large"></i>Python
+					         </a>
+                </li>
+                <li class="active">
+                  <a href="http://blog.apie.site/category/qi-ta.html">
+						        <i class="icon-folder-open icon-large"></i>其他
+					         </a>
+                </li>
+                <li >
+                  <a href="http://blog.apie.site/category/web.html">
+						        <i class="icon-folder-open icon-large"></i>Web
+					         </a>
+                </li>
+              <ul class="nav pull-right">
+                    <li><a href="http://blog.apie.site/"><i class="icon-th-list"></i>Archives</a></li>
+              </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span8" id="content">
+<div class="row">
+    <div class="span2">
+        <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-11-18T23:59:00+08:00">
+    <i class="icon-calendar"></i>&nbsp;周一 18 十一月 2019
+</abbr>
+<br/><a href="http://blog.apie.site/author/xin.html"><i class="icon-user"></i>&nbsp;xin</a>
+
+
+<br/>
+	&nbsp;&nbsp;<a href="http://blog.apie.site/tag/maven-jcenter-flutter-guo-nei-yuan.html" class="label"><i class="icon-tag"></i>&nbsp;maven jcenter flutter 国内源</a>
+</footer><!-- /.post-info -->        </div>
+    </div>
+    <div class="span6">
+<section id="content" class="well">
+    <article>
+        <header>
+            <h1>
+                <a href=""
+                        rel="bookmark"
+                        title="Permalink to 常用的仓库的国内镜像地址及配置">
+                        常用的仓库的国内镜像地址及配置
+                </a>
+            </h1>
+        </header>
+        <div class="entry-content">
+
+        <h2>为什么切换国内源</h2>
+<p>由于不明的原因，访问一些网站会出现错误。换成国内源，提升开发速度。人生苦短。</p>
+<h2>阿里云提供的 maven</h2>
+<p>maven.aliyun.com 代理了很多公共的 maven 仓库。可以使用阿里云提供的代理地址替换原来的地址，在国内获得更快的速度。</p>
+<table>
+<thead>
+<tr>
+<th>仓库名称</th>
+<th>代理源地址</th>
+<th>使用地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>central</td>
+<td>https://repo1.maven.org/maven2/</td>
+<td>https://maven.aliyun.com/repository/central 或 https://maven.aliyun.com/nexus/content/repositories/central</td>
+</tr>
+<tr>
+<td>jcenter</td>
+<td>http://jcenter.bintray.com/</td>
+<td>https://maven.aliyun.com/repository/jcenter 或 https://maven.aliyun.com/nexus/content/repositories/jcenter</td>
+</tr>
+<tr>
+<td>public</td>
+<td>central仓和jcenter仓的聚合仓</td>
+<td>https://maven.aliyun.com/repository/public 或https://maven.aliyun.com/nexus/content/groups/public</td>
+</tr>
+<tr>
+<td>google</td>
+<td>https://maven.google.com/</td>
+<td>https://maven.aliyun.com/repository/google 或 https://maven.aliyun.com/nexus/content/repositories/google</td>
+</tr>
+<tr>
+<td>gradle-plugin</td>
+<td>https://plugins.gradle.org/m2/</td>
+<td>https://maven.aliyun.com/repository/gradle-plugin 或 https://maven.aliyun.com/nexus/content/repositories/gradle-plugin</td>
+</tr>
+<tr>
+<td>spring</td>
+<td>http://repo.spring.io/libs-milestone/</td>
+<td>https://maven.aliyun.com/repository/spring 或 https://maven.aliyun.com/nexus/content/repositories/spring</td>
+</tr>
+<tr>
+<td>spring-plugin</td>
+<td>http://repo.spring.io/plugins-release/</td>
+<td>https://maven.aliyun.com/repository/spring-plugin 或 https://maven.aliyun.com/nexus/content/repositories/spring-plugin</td>
+</tr>
+<tr>
+<td>grails-core</td>
+<td>https://repo.grails.org/grails/core</td>
+<td>https://maven.aliyun.com/repository/grails-core 或 https://maven.aliyun.com/nexus/content/repositories/grails-core</td>
+</tr>
+<tr>
+<td>apache snapshots</td>
+<td>https://repository.apache.org/snapshots/</td>
+<td>https://maven.aliyun.com/repository/apache-snapshots 或 https://maven.aliyun.com/nexus/content/repositories/apache-snapshots</td>
+</tr>
+</tbody>
+</table>
+<h3>android studio 配置项目使用阿里云镜像</h3>
+<ul>
+<li>指定单个项目使用</li>
+</ul>
+<p>在项目的 <strong>build.gradle</strong> 中，修改成如下：</p>
+<div class="highlight"><pre><span></span><span class="nt">buildscript</span> <span class="p">{</span>
+    <span class="err">repositories</span> <span class="err">{</span>
+        <span class="err">maven{</span> <span class="err">url&#39;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">maven</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="k">content</span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">public</span><span class="s1">&#39; }</span>
+
+<span class="s1">//        jcenter()</span>
+<span class="s1">    }</span>
+<span class="s1">    dependencies {</span>
+<span class="s1">        classpath &#39;</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">build</span><span class="o">:</span><span class="n">gradle</span><span class="o">:</span><span class="mf">3.1.2</span><span class="s1">&#39;</span>
+
+<span class="s1">        // NOTE: Do not place your application dependencies here; they belong</span>
+<span class="s1">        // in the individual module build.gradle files</span>
+<span class="s1">    }</span>
+<span class="s1">}</span>
+
+<span class="s1">allprojects {</span>
+<span class="s1">    repositories {</span>
+<span class="s1">        maven{ url&#39;</span><span class="n">http</span><span class="o">://</span><span class="n">maven</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="k">content</span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">public</span><span class="err">&#39;</span> <span class="p">}</span>
+
+<span class="o">//</span>        <span class="nt">jcenter</span><span class="o">()</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+
+<span class="nt">task</span> <span class="nt">clean</span><span class="o">(</span><span class="nt">type</span><span class="o">:</span> <span class="nt">Delete</span><span class="o">)</span> <span class="p">{</span>
+    <span class="err">delete</span> <span class="err">rootProject.buildDir</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>全局使用</li>
+</ul>
+<p>在 C:/uers/用户名/.gradle（例如：C:/Users/Administrator/.gradle）文件夹下新建 init.gradle 文件，内容如下：</p>
+<div class="highlight"><pre><span></span>allprojects{
+    repositories {
+        def ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/public&#39;
+        def ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/jcenter&#39;
+        all { ArtifactRepository repo -&gt;
+            if(repo instanceof MavenArtifactRepository){
+                def url = repo.url.toString()
+                if (url.startsWith(&#39;https://repo1.maven.org/maven2&#39;)) {
+                    project.logger.lifecycle &quot;Repository <span class="cp">${</span><span class="n">repo</span><span class="o">.</span><span class="n">url</span><span class="cp">}</span> replaced by <span class="nv">$ALIYUN_REPOSITORY_URL.</span>&quot;
+                    remove repo
+                }
+                if (url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) {
+                    project.logger.lifecycle &quot;Repository <span class="cp">${</span><span class="n">repo</span><span class="o">.</span><span class="n">url</span><span class="cp">}</span> replaced by <span class="nv">$ALIYUN_JCENTER_URL.</span>&quot;
+                    remove repo
+                }
+            }
+        }
+        maven {
+            url ALIYUN_REPOSITORY_URL
+            url ALIYUN_JCENTER_URL
+        }
+    }
+}
+</pre></div>
+
+
+<h2>flutter 的国内镜像</h2>
+<p>使用 flutter pub get 也可以定义国内的源。</p>
+<p>设置环境变量：</p>
+<div class="highlight"><pre><span></span><span class="n">FLUTTER_STORAGE_BASE_URL</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">mirrors</span><span class="o">.</span><span class="na">tuna</span><span class="o">.</span><span class="na">tsinghua</span><span class="o">.</span><span class="na">edu</span><span class="o">.</span><span class="na">cn</span><span class="o">/</span><span class="n">flutter</span>
+<span class="n">PUB_HOSTED_URL</span><span class="o">:</span> <span class="n">https</span><span class="o">://</span><span class="n">mirrors</span><span class="o">.</span><span class="na">tuna</span><span class="o">.</span><span class="na">tsinghua</span><span class="o">.</span><span class="na">edu</span><span class="o">.</span><span class="na">cn</span><span class="o">/</span><span class="n">dart</span><span class="o">-</span><span class="n">pub</span>
+</pre></div>
+
+
+<p>可以将 dart-pub 和 flutter 定义成清华大学镜像。有效提高下载速度。</p>
+<h2>参考资料</h2>
+<ol>
+<li><a href="https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.0.0.361830549jTnxB">阿里云公共代理库</a></li>
+<li><a href="https://flutter.cn/">Flutter 中国</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学 TUNA 协会（推荐）</a></li>
+</ol>
+        </div><!-- /.entry-content -->
+    </article>
+</section>
+</div>
+</div>
+        </div><!--/span-->
+        <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://blog.apie.site/category/python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://blog.apie.site/category/qi-ta.html">
+    <i class="icon-folder-open icon-large"></i>其他
+</a>
+</li>
+<li>
+<a href="http://blog.apie.site/category/web.html">
+    <i class="icon-folder-open icon-large"></i>Web
+</a>
+</li>
+
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+    </div><!--/.fluid-container-->
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://blog.apie.site/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://blog.apie.site/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
