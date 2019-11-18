@@ -151,10 +151,10 @@
 <p>下面详细的解释下各个组成部分：</p>
 <h3>头信息（Header）</h3>
 <p>头信息就是对 JWT 整体的描述。包括两个部分：1. 数据的类型（typ），就是 JWT。2. 签名使用的算法(alg)，像下面这样；</p>
-<div class="highlight"><pre><span></span><span class="err">{</span>
-    <span class="ss">&quot;typ&quot;</span><span class="p">:</span><span class="ss">&quot;JWT&quot;</span><span class="p">,</span>
-    <span class="ss">&quot;alg&quot;</span><span class="p">:</span><span class="ss">&quot;HS256&quot;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span>{
+    &quot;typ&quot;:&quot;JWT&quot;,
+    &quot;alg&quot;:&quot;HS256&quot;
+}
 </pre></div>
 
 
@@ -167,11 +167,11 @@
 <li>私有 claim（Private claims）：这些是为了两方共享信息而自定义的 claims。既不是注册 claim 也不是公共 claim。</li>
 </ol>
 <p>一个荷载的样子应该是这样:</p>
-<div class="highlight"><pre><span></span><span class="err">{</span>
-    <span class="ss">&quot;sub&quot;</span><span class="p">:</span><span class="ss">&quot;1&quot;</span><span class="p">,</span>
-    <span class="ss">&quot;name&quot;</span><span class="p">:</span><span class="ss">&quot;Jack&quot;</span><span class="p">,</span>
-    <span class="ss">&quot;admin&quot;</span><span class="p">:</span><span class="k">true</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span></span>{
+    &quot;sub&quot;:&quot;1&quot;,
+    &quot;name&quot;:&quot;Jack&quot;,
+    &quot;admin&quot;:true
+}
 </pre></div>
 
 
@@ -189,11 +189,11 @@
 </ol>
 <p>有了以上信息，就可以开始签名了。</p>
 <p>例如，如果要使用 HMAC SHA256 算法（密码是 secret）进行加密，代码如下：</p>
-<div class="highlight"><pre><span></span><span class="n">HMACSHA256</span><span class="p">(</span>
-    <span class="n">base64UrlEncode</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="ss">&quot;.&quot;</span> <span class="o">+</span>
-    <span class="n">base64UrlEncode</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
-    <span class="n">secret</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span>HMACSHA256(
+    base64UrlEncode(header) + &quot;.&quot; +
+    base64UrlEncode(payload),
+    secret
+)
 </pre></div>
 
 
