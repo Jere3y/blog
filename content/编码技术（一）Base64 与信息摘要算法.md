@@ -1,6 +1,7 @@
 title: 编码技术（一）Base64
 date: 2018-02-03 11:26:27
 tags: 加密、签名、证书,Java,Python
+Category: 其他
 
 
 ## 标准的 Base64 编码
