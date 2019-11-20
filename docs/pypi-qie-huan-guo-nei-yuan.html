@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>天宇的个人博客 | 个人博客</title>
+    <title>PYPI 切换国内源 | 个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="" />
     <meta name="author" content="天宇" />
@@ -67,7 +67,7 @@
 						        <i class="icon-folder-open icon-large"></i>Python
 					         </a>
                 </li>
-                <li >
+                <li class="active">
                   <a href="http://blog.apie.site/category/qi-ta.html">
 						        <i class="icon-folder-open icon-large"></i>其他
 					         </a>
@@ -91,22 +91,65 @@
     <div class="container">
       <div class="row">
         <div class="span8" id="content">
-<section id="content">
-<h1>Archives for 个人博客</h1>
+<div class="row">
+    <div class="span2">
+        <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-11-20T23:59:00+08:00">
+    <i class="icon-calendar"></i>&nbsp;2019-11-20 23:59:00
+</abbr>
+<br/><a href="http://blog.apie.site/author/xin.html"><i class="icon-user"></i>&nbsp;xin</a>
 
-<dl>
-	<dt>2019-11-20 23:59:00</dt>
-	<dd><a href='pypi-qie-huan-guo-nei-yuan.html'>PYPI 切换国内源</a></dd>
-	<dt>2019-11-18 23:59:00</dt>
-	<dd><a href='chang-yong-de-cang-ku-de-guo-nei-jing-xiang-di-zhi-ji-pei-zhi.html'>常用的仓库的国内镜像地址及配置</a></dd>
-	<dt>2019-10-25 23:59:00</dt>
-	<dd><a href='zai-ubuntu-shang-bu-shu-django-xiang-mu.html'>在 Ubuntu 上部署 Django 项目</a></dd>
-	<dt>2018-02-03 11:26:27</dt>
-	<dd><a href='bian-ma-ji-zhu-yi-base64.html'>编码技术（一）Base64</a></dd>
-	<dt>2018-01-29 19:12:07</dt>
-	<dd><a href='jwt.html'>JWT</a></dd>
-</dl>
+
+<br/>
+	&nbsp;&nbsp;<a href="http://blog.apie.site/tag/guo-nei-yuan.html" class="label"><i class="icon-tag"></i>&nbsp;国内源</a>
+</footer><!-- /.post-info -->        </div>
+    </div>
+    <div class="span6">
+<section id="content" class="well">
+    <article>
+        <header>
+            <h1>
+                <a href=""
+                        rel="bookmark"
+                        title="Permalink to PYPI 切换国内源">
+                        PYPI 切换国内源
+                </a>
+            </h1>
+        </header>
+        <div class="entry-content">
+
+        <h2>临时使用</h2>
+<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+</pre></div>
+
+
+<p>some-package 是想要安装的包的名字。例如，想要安装 requests</p>
+<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
+</pre></div>
+
+
+<h2>设为默认</h2>
+<p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
+<div class="highlight"><pre><span></span>pip install pip -U
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+</pre></div>
+
+
+<p>如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：</p>
+<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+</pre></div>
+
+
+<h2>参考资料</h2>
+<ol>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">清华大学开源软件镜像站</a></li>
+</ol>
+        </div><!-- /.entry-content -->
+    </article>
 </section>
+</div>
+</div>
         </div><!--/span-->
         <div class="span3 well sidebar-nav" id="sidebar">
 <ul class="nav nav-list">
