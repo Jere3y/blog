@@ -1,133 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>在 Ubuntu 上部署 Django 项目 | 个人博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="天宇" />
-    <meta name="kittycheck_rumble" content="true" />
-    <meta name="kittycheck_position" content="top=60,right=60" />
+        <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    <title>在 Ubuntu 上部署 Django 项目 — 学习日记</title>
+    <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/theme.css" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <!--[if lte IE 8]><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><![endif]-->
+    <link rel="alternate" type="application/atom+xml"
+                           title="学习日记 — Flux Atom"
+                           href="/" /> 
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="http://blog.apie.site/theme/css/bootstrap.min.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="http://blog.apie.site/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="http://blog.apie.site/theme/css/font-awesome.css" rel="stylesheet">
-    <link href="http://blog.apie.site/theme/css/pygments.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="http://blog.apie.site/theme/img/favicon.ico">
-    <link rel="apple-touch-icon" href="http://blog.apie.site/theme/img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="http://blog.apie.site/theme/img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="http://blog.apie.site/theme/img/apple-touch-icon-114x114.png">
-
-    <link href="http://blog.apie.site/" type="application/atom+xml" rel="alternate" title="个人博客 ATOM Feed" />
+    <meta name="author"   content="xty" />
+    <meta name="keywords" content="Django" />
+    <link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" /> 
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+    <div id="page">
+      <header id="page-head">
+        <h1>
+          <a href="/index.html">学习日记</a>
+        </h1>
+      </header>
+      
+      <div id="page-body">
+        <article class="post" id="page-main" role="main">
+      <header class="post-header">
+        <h1>
+          <a rel="bookmark"
+             href="/zai-ubuntu-shang-bu-shu-django-xiang-mu.html"
+             title="Lien permanent vers «在 Ubuntu 上部署 Django 项目»">
+             在 Ubuntu 上部署 Django 项目
           </a>
-          <a class="brand" href="http://blog.apie.site/index.html">个人博客 </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                <li class="divider-vertical"></li>
-                <li class="active">
-                  <a href="http://blog.apie.site/category/python.html">
-						        <i class="icon-folder-open icon-large"></i>Python
-					         </a>
-                </li>
-                <li >
-                  <a href="http://blog.apie.site/category/qi-ta.html">
-						        <i class="icon-folder-open icon-large"></i>其他
-					         </a>
-                </li>
-                <li >
-                  <a href="http://blog.apie.site/category/web.html">
-						        <i class="icon-folder-open icon-large"></i>Web
-					         </a>
-                </li>
-              <ul class="nav pull-right">
-                    <li><a href="http://blog.apie.site/"><i class="icon-th-list"></i>Archives</a></li>
-              </ul>
-
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="span8" id="content">
-<div class="row">
-    <div class="span2">
-        <div class="well">
-<footer class="post-info">
-<abbr class="published" title="2019-10-25T23:59:00+08:00">
-    <i class="icon-calendar"></i>&nbsp;2019-10-25 23:59:00
-</abbr>
-<br/><a href="http://blog.apie.site/author/tian-yu.html"><i class="icon-user"></i>&nbsp;天宇</a>
-
-
-<br/>
-	&nbsp;&nbsp;<a href="http://blog.apie.site/tag/django.html" class="label"><i class="icon-tag"></i>&nbsp;Django</a>
-</footer><!-- /.post-info -->        </div>
-    </div>
-    <div class="span6">
-<section id="content" class="well">
-    <article>
-        <header>
-            <h1>
-                <a href=""
-                        rel="bookmark"
-                        title="Permalink to 在 Ubuntu 上部署 Django 项目">
-                        在 Ubuntu 上部署 Django 项目
-                </a>
-            </h1>
-        </header>
-        <div class="entry-content">
-
+        </h1>
+        <div class="meta">
+<!-- includes/article_meta.html -->
+            发布时间： <time datetime="2019-10-25T23:59:00+08:00">2019-10-25 23:59:00</time>
+            分类： «<a href="/category/python.html">Python</a>» 
+            作者： <a href="/author/xty.html">xty</a>              <br />标签:              <a rel="tag" href="/tag/django.html">Django</a>        </div>
+      </header>
+      <div class="post-content"> 
         <h2>部署前准备</h2>
 <p>需要安装 pip、apache2、和 libapache2-mod-wsgi</p>
 <p>如果 Python 版本是 2.0 版本，使用 apt 安装三个软件：</p>
-<div class="highlight"><pre><span></span>sudo apt-get install python-pip apache2 libapache2-mod-wsgi
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">apache2</span> <span class="n">libapache2</span><span class="o">-</span><span class="k">mod</span><span class="o">-</span><span class="n">wsgi</span>
 </pre></div>
 
 
 <p>如果 Python 版本是 3.0 版本，运行如下命令：</p>
-<div class="highlight"><pre><span></span>sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">apache2</span> <span class="n">libapache2</span><span class="o">-</span><span class="k">mod</span><span class="o">-</span><span class="n">wsgi</span><span class="o">-</span><span class="n">py3</span>
 </pre></div>
 
 
@@ -165,67 +89,63 @@
 <li>WSGIScriptAlias 参数告诉 apache 服务器，访问网页根目录，将导向到 wsgi.py 文件</li>
 </ul>
 <p>保存上面的文件，激活该配置；</p>
-<div class="highlight"><pre><span></span>a2ensite /etc/apache2/sites-available/youproject.conf
+<div class="highlight"><pre><span></span><span class="n">a2ensite</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">youproject</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>测试配置是否正确：</p>
-<div class="highlight"><pre><span></span>apachectl configtest
+<div class="highlight"><pre><span></span><span class="n">apachectl</span> <span class="n">configtest</span>
 </pre></div>
 
 
 <p>如果配置正确无误，重启 apache2 服务器，完成网站部署：</p>
-<div class="highlight"><pre><span></span>service apache2 restart
+<div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">apache2</span> <span class="k">restart</span>
 </pre></div>
 
 
 <h2>说明</h2>
 <p>如果碰到权限问题，请使用 sudo 命令。</p>
-        </div><!-- /.entry-content -->
-    </article>
-</section>
-</div>
-</div>
-        </div><!--/span-->
-        <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
+      </div>
+      <footer class="post-footer">
+        <div class="meta">
+            Posté dans «<a href="/category/python.html">Python</a>» 
+            par <a href="/author/xty.html">xty</a><br />
+            标签 :  #<a href="/tag/django.html">Django</a>        </div>
+      </footer>
+      </article> <!-- /#page-main -->
 
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="http://blog.apie.site/category/python.html">
-    <i class="icon-folder-open icon-large"></i>Python
-</a>
-</li>
-<li>
-<a href="http://blog.apie.site/category/qi-ta.html">
-    <i class="icon-folder-open icon-large"></i>其他
-</a>
-</li>
-<li>
-<a href="http://blog.apie.site/category/web.html">
-    <i class="icon-folder-open icon-large"></i>Web
-</a>
-</li>
+        <aside id="page-side">
+          <!-- begin includes/sidebar.html -->
+          <nav>
+            <h3>页面</h3>
+            <ul>
+              <li><a href="/index.html">首页</a></li>
+              <li><a href="/categories.html">文章分类</a></li>
+              <li><a href="/archives.html">归档</a></li>
+              <li><a href="/tags.html">标签</a></li>
+            </ul>
+          </nav>
 
+          <nav>
+            <h3>文章分类</h3>
+            <ul>
+              <li class="active"><a href="/category/python.html">Python</a></li>
+              <li><a href="/category/qi-ta.html">其他</a></li>
+              <li><a href="/category/web.html">Web</a></li>
+            </ul>
+          </nav>
 
+          <nav>
+            <h3>链接</h3>
+            <ul>
+            </ul>
+          </nav>
+          <!-- end includes/sidebar.html --></aside> <!-- /#page-side -->
+      </div>  <!-- /#page-body -->
 
-</ul>        </div><!--/.well -->
-
-      </div><!--/row-->
-
-      <hr>
-
-
-<footer>
-    <address id="about" style="text-align: center">
-      ©2017-2019 blog.apie.site 本站所有文章遵循 <a href="https://en.wikipedia.org/wiki/WTFPL" target="_blank">WTFPL</a>
-    </address><!-- /#about -->
-</footer>    </div><!--/.fluid-container-->
-
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://blog.apie.site/theme/js/bootstrap.min.js"></script>
+      <footer id="page-foot">
+        <p> 个人技术日记，遵循 WTFPL</p>
+      </footer>
+    </div> <!-- /#page -->
   </body>
 </html>

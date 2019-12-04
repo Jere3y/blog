@@ -1,122 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ article.lang if article and article.lang else DEFAULT_LANG }}">
   <head>
+  {% block headers %}
     <meta charset="utf-8" />
-    <title>{% block title %}天宇的个人博客{% endblock %} | {{ SITENAME }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="{{ KEYWORDS }}" />
-    <meta name="author" content="{{ AUTHOR }}" />
-    <meta name="kittycheck_rumble" content="true" />
-    <meta name="kittycheck_position" content="top=60,right=60" />
-
-    <!-- Le styles -->
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="{{ SITEURL }}/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/css/font-awesome.css" rel="stylesheet">
-    <link href="{{ SITEURL }}/theme/css/pygments.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="{{ SITEURL }}/theme/img/favicon.ico">
-    <link rel="apple-touch-icon" href="{{ SITEURL }}/theme/img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ SITEURL }}/theme/img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ SITEURL }}/theme/img/apple-touch-icon-114x114.png">
-
-    <link href="{{ SITEURL }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
+    <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+    <!--[if lte IE 8]><script type="text/javascript" src="{{ SITEURL }}/theme/js/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/theme.css" />
+    <link rel="shortcut icon" type="image/png" href="{{ SITEURL }}/favicon.png" />
+    <!--[if lte IE 8]><link rel="shortcut icon" type="image/x-icon" href="{{ SITEURL }}/favicon.ico" /><![endif]-->
+    <link rel="alternate" type="application/atom+xml"
+                           title="{{ SITENAME }} — Flux Atom"
+                           href="{{ SITEURL }}/{{ FEED_ATOM }}" /> 
     {% if FEED_RSS %}
-    <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+    <link rel ="alternate" type="application/rss+xml"
+                           title="{{ SITENAME }} — Flux RSS"
+                           href="{{ SITEURL }}/{{ FEED_RSS }}" /> 
     {% endif %}
+  {% endblock headers %}
   </head>
   <body>
-    {% include 'github.html' %}
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="{{ SITEURL }}/index.html">{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              {% for title, link in MENUITEMS %}
-                  <li><a href="{{ link }}">{{ title }}</a></li>
-              {% endfor %}
-              {% if DISPLAY_PAGES_ON_MENU %}
-              {% for gpage in pages %}
-                <li {% if page == gpage %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ gpage.url }}">{{ gpage.title }}</a></li>
-              {% endfor %}
-                <li class="divider-vertical"></li>
-              {% endif %}
-              {% for cat, null in categories %}
-                <li {% if cat == category %}class="active"{% endif %}>
-                  <a href="{{ SITEURL }}/{{ cat.url }}">
-						        <i class="icon-folder-open icon-large"></i>{{ cat }}
-					         </a>
-                </li>
-              {% endfor %}
-              <ul class="nav pull-right">
-                    <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}"><i class="icon-th-list"></i>Archives</a></li>
-              </ul>
+    <div id="page">
+      <header id="page-head">
+        <h1>
+          <a href="{{ SITEURL }}/index.html">{{ SITENAME }}</a>
+        </h1>
+      </header>
+      
+      <div id="page-body">
+        <{%- if article %}article class="post" {% else %}section {% endif -%}id="page-main" role="main">
+{% block content %}
+{% endblock content %}
+      </{%- if article %}article{% else %}section{% endif -%}> <!-- /#page-main -->
 
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+        <aside id="page-side">
+          {%- include "includes/sidebar.html" -%}
+        </aside> <!-- /#page-side -->
+      </div>  <!-- /#page-body -->
 
-    <div class="container">
-      <div class="row">
-        <div class="span8" id="content">
-            {% block content %}
-            {% endblock %}
-        </div><!--/span-->
-        <div class="span3 well sidebar-nav" id="sidebar">
-            {% include 'sidebar.html' %}
-        </div><!--/.well -->
-
-      </div><!--/row-->
-
-      <hr>
-
-      {% include 'footer.html' %}
-    </div><!--/.fluid-container-->
-
-    {% include 'analytics.html' %}
-    {% include 'metryka.html' %}
-    {% include 'piwik.html' %}
-    {#% include 'disqus_script.html' %#}
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
-    <script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
+      <footer id="page-foot">
+        <p> {{ FOOTER_TEXT or 'Powered by <a href="http://pelican.readthedocs.org">Pelican</a>' }}</p>
+        {% if GITHUB_URL %}<p><a id="github-link" href="{{ GITHUB_URL}}">Fork me on Github</a></p>{% endif %}
+      </footer>
+    </div> <!-- /#page -->
+    {% if GOOGLE_ANALYTICS %}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS }}']);
+          _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); 
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {% endif %}
   </body>
 </html>

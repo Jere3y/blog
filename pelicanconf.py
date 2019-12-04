@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = '天宇'
-SITENAME = '个人博客'
-SITEURL = 'http://blog.apie.site/'
+AUTHOR = 'xty'
+SITENAME = '学习日记'
+# SITEURL = 'http://blog.apie.site/'
 
 PATH = 'content'
 
@@ -36,3 +36,10 @@ DEFAULT_PAGINATION = 20
 
 # Specify name of a built-in theme
 THEME = "themes/mytheme"
+
+FRONT_PAGE_FULL_ARTICLES = False
+ALTERNATE_FONTS = False
+TAGS_IN_MOBILE_SIDEBAR = False
+NEW_ANALYTICS = False
+ANALYTICS_DOMAIN = ''
+FOOTER_TEXT = '个人技术日记，遵循 WTFPL'
