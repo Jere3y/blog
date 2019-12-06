@@ -28,8 +28,8 @@
       </div>
       <footer class="post-footer">
         <div class="meta">
-            Posté dans «<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>» 
-            par <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author}}</a><br />
+            分类： «<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>» 
+            作者： <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author}}</a><br />
             标签 : {% for tag in article.tags %} #<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% endfor %}
         </div>
       </footer>

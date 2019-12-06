@@ -38,20 +38,23 @@
         </h1>
         <div class="meta">
 <!-- includes/article_meta.html -->
-            发布时间： <time datetime="2019-10-25T23:59:00+08:00">2019-10-25 23:59:00</time>
-            分类： «<a href="/category/python.html">Python</a>» 
-            作者： <a href="/author/xty.html">xty</a>              <br />标签:              <a rel="tag" href="/tag/django.html">Django</a>        </div>
+<time style="display: block; margin-top: 5px;"
+  datetime="2019-10-25T23:59:00+08:00">发布时间：2019-10-25 23:59:00</time>
+<a style="display: block; margin-top: 5px;"
+  href="/category/python.html" >分类：Python</a>
+<a style="display: block; margin-top: 5px;"
+  href="/author/xty.html">作者：xty</a><br />标签:<a rel="tag" href="/tag/django.html">Django</a>        </div>
       </header>
       <div class="post-content"> 
         <h2>部署前准备</h2>
 <p>需要安装 pip、apache2、和 libapache2-mod-wsgi</p>
 <p>如果 Python 版本是 2.0 版本，使用 apt 安装三个软件：</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">apache2</span> <span class="n">libapache2</span><span class="o">-</span><span class="k">mod</span><span class="o">-</span><span class="n">wsgi</span>
+<div class="highlight"><pre><span></span>sudo apt-get install python-pip apache2 libapache2-mod-wsgi
 </pre></div>
 
 
 <p>如果 Python 版本是 3.0 版本，运行如下命令：</p>
-<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">apache2</span> <span class="n">libapache2</span><span class="o">-</span><span class="k">mod</span><span class="o">-</span><span class="n">wsgi</span><span class="o">-</span><span class="n">py3</span>
+<div class="highlight"><pre><span></span>sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
 </pre></div>
 
 
@@ -89,17 +92,17 @@
 <li>WSGIScriptAlias 参数告诉 apache 服务器，访问网页根目录，将导向到 wsgi.py 文件</li>
 </ul>
 <p>保存上面的文件，激活该配置；</p>
-<div class="highlight"><pre><span></span><span class="n">a2ensite</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">youproject</span><span class="p">.</span><span class="n">conf</span>
+<div class="highlight"><pre><span></span>a2ensite /etc/apache2/sites-available/youproject.conf
 </pre></div>
 
 
 <p>测试配置是否正确：</p>
-<div class="highlight"><pre><span></span><span class="n">apachectl</span> <span class="n">configtest</span>
+<div class="highlight"><pre><span></span>apachectl configtest
 </pre></div>
 
 
 <p>如果配置正确无误，重启 apache2 服务器，完成网站部署：</p>
-<div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">apache2</span> <span class="k">restart</span>
+<div class="highlight"><pre><span></span>service apache2 restart
 </pre></div>
 
 
@@ -108,8 +111,8 @@
       </div>
       <footer class="post-footer">
         <div class="meta">
-            Posté dans «<a href="/category/python.html">Python</a>» 
-            par <a href="/author/xty.html">xty</a><br />
+            分类： «<a href="/category/python.html">Python</a>» 
+            作者： <a href="/author/xty.html">xty</a><br />
             标签 :  #<a href="/tag/django.html">Django</a>        </div>
       </footer>
       </article> <!-- /#page-main -->

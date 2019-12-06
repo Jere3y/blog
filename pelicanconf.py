@@ -7,6 +7,7 @@ SITENAME = '学习日记'
 # SITEURL = 'http://blog.apie.site/'
 
 PATH = 'content'
+STATIC_PATHS = ['images']
 
 TIMEZONE = 'Asia/Harbin'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'

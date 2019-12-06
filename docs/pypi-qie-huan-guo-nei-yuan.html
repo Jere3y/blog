@@ -38,30 +38,33 @@
         </h1>
         <div class="meta">
 <!-- includes/article_meta.html -->
-            发布时间： <time datetime="2019-11-20T23:59:00+08:00">2019-11-20 23:59:00</time>
-            分类： «<a href="/category/qi-ta.html">其他</a>» 
-            作者： <a href="/author/xin.html">xin</a>              <br />标签:              <a rel="tag" href="/tag/guo-nei-yuan.html">国内源</a>        </div>
+<time style="display: block; margin-top: 5px;"
+  datetime="2019-11-20T23:59:00+08:00">发布时间：2019-11-20 23:59:00</time>
+<a style="display: block; margin-top: 5px;"
+  href="/category/qi-ta.html" >分类：其他</a>
+<a style="display: block; margin-top: 5px;"
+  href="/author/xin.html">作者：xin</a><br />标签:<a rel="tag" href="/tag/guo-nei-yuan.html">国内源</a>        </div>
       </header>
       <div class="post-content"> 
         <h2>临时使用</h2>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="k">some</span><span class="o">-</span><span class="n">package</span>
+<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 </pre></div>
 
 
 <p>some-package 是想要安装的包的名字。例如，想要安装 requests</p>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="n">requests</span>
+<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
 </pre></div>
 
 
 <h2>设为默认</h2>
 <p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pip</span> <span class="o">-</span><span class="n">U</span>
-<span class="n">pip</span> <span class="n">config</span> <span class="k">set</span> <span class="k">global</span><span class="p">.</span><span class="k">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span>
+<div class="highlight"><pre><span></span>pip install pip -U
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 </pre></div>
 
 
 <p>如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：</p>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="n">pip</span> <span class="o">-</span><span class="n">U</span>
+<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 </pre></div>
 
 
@@ -72,8 +75,8 @@
       </div>
       <footer class="post-footer">
         <div class="meta">
-            Posté dans «<a href="/category/qi-ta.html">其他</a>» 
-            par <a href="/author/xin.html">xin</a><br />
+            分类： «<a href="/category/qi-ta.html">其他</a>» 
+            作者： <a href="/author/xin.html">xin</a><br />
             标签 :  #<a href="/tag/guo-nei-yuan.html">国内源</a>        </div>
       </footer>
       </article> <!-- /#page-main -->

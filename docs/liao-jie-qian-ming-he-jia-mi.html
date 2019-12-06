@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    <title>了解签名和加密 — 学习日记</title>
+    <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/theme.css" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <!--[if lte IE 8]><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><![endif]-->
+    <link rel="alternate" type="application/atom+xml"
+                           title="学习日记 — Flux Atom"
+                           href="/" /> 
+
+    <meta name="author"   content="xty" />
+    <meta name="keywords" content="加密、签名、信息安全" />
+    <link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" /> 
+  </head>
+  <body>
+    <div id="page">
+      <header id="page-head">
+        <h1>
+          <a href="/index.html">学习日记</a>
+        </h1>
+      </header>
+      
+      <div id="page-body">
+        <article class="post" id="page-main" role="main">
+      <header class="post-header">
+        <h1>
+          <a rel="bookmark"
+             href="/liao-jie-qian-ming-he-jia-mi.html"
+             title="Lien permanent vers «了解签名和加密»">
+             了解签名和加密
+          </a>
+        </h1>
+        <div class="meta">
+<!-- includes/article_meta.html -->
+<time style="display: block; margin-top: 5px;"
+  datetime="2019-12-05T15:15:27+08:00">发布时间：2019-12-05 15:15:27</time>
+<a style="display: block; margin-top: 5px;"
+  href="/category/qi-ta.html" >分类：其他</a>
+<a style="display: block; margin-top: 5px;"
+  href="/author/xty.html">作者：xty</a><br />标签:<a rel="tag" href="/tag/jia-mi-qian-ming-xin-xi-an-quan.html">加密、签名、信息安全</a>        </div>
+      </header>
+      <div class="post-content"> 
+        <h2>总结</h2>
+<p>用一句话来解释签名和加密。</p>
+<ul>
+<li>签名：确定发件人、避免信息在传输过程中内容被篡改。</li>
+<li>加密：避免信息在传输过程中被第三方窃取到内容。</li>
+</ul>
+<blockquote>
+<p>假设 A 给 B 发一条信息。B 可以根据签名，来判断这条信息是否来源于 A？是否是完整并且没有被被篡改？为了防止信息的内容被第三方窃取，A 和 B 可以约定一个只有他们自己可以看懂的加密方式，对信息进行加密，防止窃取。</p>
+</blockquote>
+<h2>签名</h2>
+<p>一个例子，A 要给 B 发一封电子邮件。</p>
+<p>下面开始思考。</p>
+<ol>
+<li>B 应该如何判断这封电子邮件是 A 发来的？</li>
+<li>如何保证 A 发送的信息没有被篡改过？</li>
+</ol>
+<p>为了解决问题 1，A 在信息中签上自己的名字，B 熟知 A 的笔迹，可以判断是否是 A 发过来的信息。</p>
+<p>但是上面的方案，没有办法保证信息的完整性，比如某个看到了信息的人，在信息中加了其他的信息（不破坏 A 的签名）。所以，为了解决问题 2，就需要把信息的全文提取，做个“签名”，并且这种签名要满足两点，第一，一个信息只能对应一个签名；第二，在只知道签名的情况下，不能计算出来对应的信息。</p>
+<p>签名算法就应运而生了。</p>
+<p>下面用最简单的 MD5 算法来作为例子，来解释<strong>签名算法</strong>在具体实例中的应用。</p>
+<p>假设 A 要给 B 发送一条信息，内容是：</p>
+<div class="highlight"><pre><span></span>明天十点老地方吃饭。
+</pre></div>
+
+
+<p>A 使用 MD5 算法，来签名这条信息，内容变成：</p>
+<div class="highlight"><pre><span></span>明天十点老地方吃饭。
+MD5:0887F30C8A63DD13C6AF5EFBF003C80F
+</pre></div>
+
+
+<p>B 在接收到信息后，根据 MD5 算法，对照后，发现信息和签名完全对的上。</p>
+<p>但是，这时候就出现问题了。如果 C 也熟悉 MD5 算法，就可以修改上面一条信息，变成：</p>
+<div class="highlight"><pre><span></span>明天九点老地方吃饭。
+MD5:513059EEDED204527E4BA9E5DDED101A
+</pre></div>
+
+
+<p>B 也检验了签名，发现也没有问题。</p>
+<p>所以，A 和 B 之间需要约定一个“暗号”，这个暗号只有 A 和 B 知道。A 在对信息进行签名的时候，要加上“暗号”。例如，A 和 B 约定的暗号是：love</p>
+<p>A 发送给 B 的信息就变成（MD5("明天十点老地方吃饭。love")的值6F277AF59697AEBE0EBAB9421A6A8A9B）：</p>
+<div class="highlight"><pre><span></span>明天十点老地方吃饭。
+MD5:6F277AF59697AEBE0EBAB9421A6A8A9B
+</pre></div>
+
+
+<p>B 接收到信息后，在内容加上“love”，计算签名，得出签名值一致，便可以确定信息来源是 A，也可以确定信息没有篡改过。因为 C 不知道这个暗号，并且根据签名是不能计算出来信息内容，这很重要！所以 C 没有办法更改信息并且计算新信息的签名值。</p>
+<p>A 和 B 在约定“暗号”的签名后，就解决了刚刚提出的两个问题。</p>
+<ol>
+<li>防篡改。</li>
+<li>确定发件人。</li>
+</ol>
+<p>即使 C 在当中看到了 A 和 B 的信息，也没有办法更改信息的内容。</p>
+<h2>加密</h2>
+<p>刚刚的例子中，假设 C 可以看到了 A 和 B 发送的信息。由于信息是铭文传送的，所以 C 是可以看懂内容的。</p>
+<p>下面思考，如果 A 和 B 之间谈论的是秘密，不想被第三方看到怎么办？</p>
+<p>于是，加密算法来了！</p>
+<p>A 在发送信息的时候，使用密码 key 对信息加密，B 在接受信息时，先使用密码 key 解密，再读取信息。</p>
+<p>这中加密方法加签名方法，可以保证信息即使在第三发 C 可以截取到的情况下，也不会被 C 窃取到内容和篡改。</p>
+<h3>对称加密</h3>
+<p>上面举的例子，A 和 B 都是用 key 对信息加密、解密。</p>
+<p>这种，A B 双方使用同一个密码进行加密的加密方式就是“对称加密”。如图所示：s</p>
+<p><img alt="对称加密图示" src="/images/对称加密图示.png"></p>
+<h2>参考</h2>
+<ol>
+<li><a href="https://docs.python.org/3/library/base64.html">Python3 doc</a></li>
+<li><a href="http://ascii.911cha.com/">ASCII 对照表</a></li>
+<li><a href="https://tools.ietf.org/html/rfc3548#page-4">RFC3548</a></li>
+<li><a href="https://tools.ietf.org/html/rfc2045#page-24">RFC2045</a></li>
+</ol>
+      </div>
+      <footer class="post-footer">
+        <div class="meta">
+            分类： «<a href="/category/qi-ta.html">其他</a>» 
+            作者： <a href="/author/xty.html">xty</a><br />
+            标签 :  #<a href="/tag/jia-mi-qian-ming-xin-xi-an-quan.html">加密、签名、信息安全</a>        </div>
+      </footer>
+      </article> <!-- /#page-main -->
+
+        <aside id="page-side">
+          <!-- begin includes/sidebar.html -->
+          <nav>
+            <h3>页面</h3>
+            <ul>
+              <li><a href="/index.html">首页</a></li>
+              <li><a href="/categories.html">文章分类</a></li>
+              <li><a href="/archives.html">归档</a></li>
+              <li><a href="/tags.html">标签</a></li>
+            </ul>
+          </nav>
+
+          <nav>
+            <h3>文章分类</h3>
+            <ul>
+              <li><a href="/category/python.html">Python</a></li>
+              <li class="active"><a href="/category/qi-ta.html">其他</a></li>
+              <li><a href="/category/web.html">Web</a></li>
+            </ul>
+          </nav>
+
+          <nav>
+            <h3>链接</h3>
+            <ul>
+            </ul>
+          </nav>
+          <!-- end includes/sidebar.html --></aside> <!-- /#page-side -->
+      </div>  <!-- /#page-body -->
+
+      <footer id="page-foot">
+        <p> 个人技术日记，遵循 WTFPL</p>
+      </footer>
+    </div> <!-- /#page -->
+  </body>
+</html>
