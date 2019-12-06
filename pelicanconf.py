@@ -11,7 +11,6 @@ STATIC_PATHS = ['images']
 
 TIMEZONE = 'Asia/Harbin'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
-DEFAULT_LANG = 'en'
 OUTPUT_PATH = 'docs/'
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -43,4 +42,4 @@ ALTERNATE_FONTS = False
 TAGS_IN_MOBILE_SIDEBAR = False
 NEW_ANALYTICS = False
 ANALYTICS_DOMAIN = ''
-FOOTER_TEXT = '个人技术日记，遵循 WTFPL'
+FOOTER_TEXT = '个人学习日记，所有文章遵循 WTFPL '
