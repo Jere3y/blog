@@ -112,31 +112,31 @@
 <li>指定单个项目使用</li>
 </ul>
 <p>在项目的 <strong>build.gradle</strong> 中，修改成如下：</p>
-<div class="highlight"><pre><span></span><span class="nt">buildscript</span> <span class="p">{</span>
-    <span class="err">repositories</span> <span class="err">{</span>
-        <span class="err">maven{</span> <span class="err">url&#39;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">maven</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="k">content</span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">public</span><span class="s1">&#39; }</span>
+<div class="highlight"><pre><span></span><span class="nv">buildscript</span> {
+    <span class="nv">repositories</span> {
+        <span class="nv">maven</span>{ <span class="nv">url</span><span class="s1">&#39;</span><span class="s">http://maven.aliyun.com/nexus/content/groups/public</span><span class="s1">&#39;</span> }
 
-<span class="s1">//        jcenter()</span>
-<span class="s1">    }</span>
-<span class="s1">    dependencies {</span>
-<span class="s1">        classpath &#39;</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">build</span><span class="o">:</span><span class="n">gradle</span><span class="o">:</span><span class="mf">3.1.2</span><span class="s1">&#39;</span>
+<span class="o">//</span>        <span class="nv">jcenter</span><span class="ss">()</span>
+    }
+    <span class="nv">dependencies</span> {
+        <span class="nv">classpath</span> <span class="s1">&#39;</span><span class="s">com.android.tools.build:gradle:3.1.2</span><span class="s1">&#39;</span>
 
-<span class="s1">        // NOTE: Do not place your application dependencies here; they belong</span>
-<span class="s1">        // in the individual module build.gradle files</span>
-<span class="s1">    }</span>
-<span class="s1">}</span>
+        <span class="o">//</span> <span class="nv">NOTE</span>: <span class="k">Do</span> <span class="nv">not</span> <span class="nv">place</span> <span class="nv">your</span> <span class="nv">application</span> <span class="nv">dependencies</span> <span class="nv">here</span><span class="c1">; they belong</span>
+        <span class="o">//</span> <span class="nv">in</span> <span class="nv">the</span> <span class="nv">individual</span> <span class="nv">module</span> <span class="nv">build</span>.<span class="nv">gradle</span> <span class="nv">files</span>
+    }
+}
 
-<span class="s1">allprojects {</span>
-<span class="s1">    repositories {</span>
-<span class="s1">        maven{ url&#39;</span><span class="n">http</span><span class="o">://</span><span class="n">maven</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="k">content</span><span class="o">/</span><span class="n">groups</span><span class="o">/</span><span class="n">public</span><span class="err">&#39;</span> <span class="p">}</span>
+<span class="nv">allprojects</span> {
+    <span class="nv">repositories</span> {
+        <span class="nv">maven</span>{ <span class="nv">url</span><span class="s1">&#39;</span><span class="s">http://maven.aliyun.com/nexus/content/groups/public</span><span class="s1">&#39;</span> }
 
-<span class="o">//</span>        <span class="nt">jcenter</span><span class="o">()</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+<span class="o">//</span>        <span class="nv">jcenter</span><span class="ss">()</span>
+    }
+}
 
-<span class="nt">task</span> <span class="nt">clean</span><span class="o">(</span><span class="nt">type</span><span class="o">:</span> <span class="nt">Delete</span><span class="o">)</span> <span class="p">{</span>
-    <span class="err">delete</span> <span class="err">rootProject.buildDir</span>
-<span class="p">}</span>
+<span class="nv">task</span> <span class="nv">clean</span><span class="ss">(</span><span class="nv">type</span>: <span class="nv">Delete</span><span class="ss">)</span> {
+    <span class="nv">delete</span> <span class="nv">rootProject</span>.<span class="nv">buildDir</span>
+}
 </pre></div>
 
 
@@ -144,26 +144,26 @@
 <li>全局使用</li>
 </ul>
 <p>在 C:/uers/用户名/.gradle（例如：C:/Users/Administrator/.gradle）文件夹下新建 init.gradle 文件，内容如下：</p>
-<div class="highlight"><pre><span></span>allprojects{
-    repositories {
-        def ALIYUN_REPOSITORY_URL = &#39;https://maven.aliyun.com/repository/public&#39;
-        def ALIYUN_JCENTER_URL = &#39;https://maven.aliyun.com/repository/jcenter&#39;
-        all { ArtifactRepository repo -&gt;
-            if(repo instanceof MavenArtifactRepository){
-                def url = repo.url.toString()
-                if (url.startsWith(&#39;https://repo1.maven.org/maven2&#39;)) {
-                    project.logger.lifecycle &quot;Repository <span class="cp">${</span><span class="n">repo</span><span class="o">.</span><span class="n">url</span><span class="cp">}</span> replaced by <span class="nv">$ALIYUN_REPOSITORY_URL.</span>&quot;
-                    remove repo
+<div class="highlight"><pre><span></span><span class="nv">allprojects</span>{
+    <span class="nv">repositories</span> {
+        <span class="nv">def</span> <span class="nv">ALIYUN_REPOSITORY_URL</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">https://maven.aliyun.com/repository/public</span><span class="s1">&#39;</span>
+        <span class="nv">def</span> <span class="nv">ALIYUN_JCENTER_URL</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">https://maven.aliyun.com/repository/jcenter</span><span class="s1">&#39;</span>
+        <span class="nv">all</span> { <span class="nv">ArtifactRepository</span> <span class="nv">repo</span> <span class="o">-&gt;</span>
+            <span class="k">if</span><span class="ss">(</span><span class="nv">repo</span> <span class="nv">instanceof</span> <span class="nv">MavenArtifactRepository</span><span class="ss">)</span>{
+                <span class="nv">def</span> <span class="nv">url</span> <span class="o">=</span> <span class="nv">repo</span>.<span class="nv">url</span>.<span class="nv">toString</span><span class="ss">()</span>
+                <span class="k">if</span> <span class="ss">(</span><span class="nv">url</span>.<span class="nv">startsWith</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">https://repo1.maven.org/maven2</span><span class="s1">&#39;</span><span class="ss">))</span> {
+                    <span class="nv">project</span>.<span class="nv">logger</span>.<span class="nv">lifecycle</span> <span class="s2">&quot;</span><span class="s">Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL.</span><span class="s2">&quot;</span>
+                    <span class="nv">remove</span> <span class="nv">repo</span>
                 }
-                if (url.startsWith(&#39;https://jcenter.bintray.com/&#39;)) {
-                    project.logger.lifecycle &quot;Repository <span class="cp">${</span><span class="n">repo</span><span class="o">.</span><span class="n">url</span><span class="cp">}</span> replaced by <span class="nv">$ALIYUN_JCENTER_URL.</span>&quot;
-                    remove repo
+                <span class="k">if</span> <span class="ss">(</span><span class="nv">url</span>.<span class="nv">startsWith</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">https://jcenter.bintray.com/</span><span class="s1">&#39;</span><span class="ss">))</span> {
+                    <span class="nv">project</span>.<span class="nv">logger</span>.<span class="nv">lifecycle</span> <span class="s2">&quot;</span><span class="s">Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL.</span><span class="s2">&quot;</span>
+                    <span class="nv">remove</span> <span class="nv">repo</span>
                 }
             }
         }
-        maven {
-            url ALIYUN_REPOSITORY_URL
-            url ALIYUN_JCENTER_URL
+        <span class="nv">maven</span> {
+            <span class="nv">url</span> <span class="nv">ALIYUN_REPOSITORY_URL</span>
+            <span class="nv">url</span> <span class="nv">ALIYUN_JCENTER_URL</span>
         }
     }
 }
