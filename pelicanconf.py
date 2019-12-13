@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'xty'
-SITENAME = '学习日记'
+AUTHOR = '天宇'
+SITENAME = '无涯日记'
 # SITEURL = 'http://blog.apie.site/'
 
 PATH = 'content'

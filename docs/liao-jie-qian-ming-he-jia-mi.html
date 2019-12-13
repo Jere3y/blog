@@ -5,17 +5,17 @@
       <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
-  <title>了解签名和加密 — 学习日记</title>
+  <title>了解签名和加密 — 无涯日记</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
   <link rel="stylesheet" type="text/css" href="/theme/css/theme.css" />
   <link rel="shortcut icon" type="image/png" href="/favicon.png" />
   <!--[if lte IE 8]><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><![endif]-->
-  <link rel="alternate" type="application/atom+xml" title="学习日记 — Flux Atom"
+  <link rel="alternate" type="application/atom+xml" title="无涯日记 — Flux Atom"
     href="/" />
 
-    <meta name="author"   content="xty" />
-    <meta name="keywords" content="加密、签名、信息安全" />
+    <meta name="author"   content="天宇" />
+    <meta name="keywords" content="加密, 签名, 哈希算法, 信息安全" />
     <link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" /> 
 </head>
 
@@ -23,7 +23,7 @@
   <div id="page">
     <header id="page-head">
       <h1>
-        <a href="/index.html">学习日记</a>
+        <a href="/index.html">无涯日记</a>
       </h1>
     </header>
 
@@ -44,7 +44,7 @@
 <a style="display: block; margin-top: 5px;"
   href="/category/qi-ta.html" >分类：其他</a>
 <a style="display: block; margin-top: 5px;"
-  href="/author/xty.html">作者：xty</a><br />标签:<a rel="tag" href="/tag/jia-mi-qian-ming-xin-xi-an-quan.html">加密、签名、信息安全</a>        </div>
+  href="/author/tian-yu.html">作者：天宇</a><br />标签:<a rel="tag" href="/tag/jia-mi.html">加密</a>, <a rel="tag" href="/tag/qian-ming.html">签名</a>, <a rel="tag" href="/tag/ha-xi-suan-fa.html">哈希算法</a>, <a rel="tag" href="/tag/xin-xi-an-quan.html">信息安全</a>        </div>
       </header>
       <div class="post-content"> 
         <h2>总结</h2>
@@ -100,6 +100,9 @@ MD5:6F277AF59697AEBE0EBAB9421A6A8A9B
 <li>确定发件人。</li>
 </ol>
 <p>即使 C 在当中看到了 A 和 B 的信息，也没有办法更改信息的内容。</p>
+<blockquote>
+<p>常见的签名算法有 MD5 SHA256 等</p>
+</blockquote>
 <h2>加密</h2>
 <p>刚刚的例子中，假设 C 可以看到了 A 和 B 发送的信息。由于信息是铭文传送的，所以 C 是可以看懂内容的。</p>
 <p>下面思考，如果 A 和 B 之间谈论的是秘密，不想被第三方看到怎么办？</p>
@@ -108,21 +111,21 @@ MD5:6F277AF59697AEBE0EBAB9421A6A8A9B
 <p>这中加密方法加签名方法，可以保证信息即使在第三发 C 可以截取到的情况下，也不会被 C 窃取到内容和篡改。</p>
 <h3>对称加密</h3>
 <p>上面举的例子，A 和 B 都是用 key 对信息加密、解密。</p>
-<p>这种，A B 双方使用同一个密码进行加密的加密方式就是“对称加密”。如图所示：s</p>
-<p><img alt="对称加密图示" src="/images/对称加密图示.png"></p>
-<h2>参考</h2>
-<ol>
-<li><a href="https://docs.python.org/3/library/base64.html">Python3 doc</a></li>
-<li><a href="http://ascii.911cha.com/">ASCII 对照表</a></li>
-<li><a href="https://tools.ietf.org/html/rfc3548#page-4">RFC3548</a></li>
-<li><a href="https://tools.ietf.org/html/rfc2045#page-24">RFC2045</a></li>
-</ol>
+<p>这种，A B 双方使用同一个密码进行加密的加密方式就是“对称加密”。如图所示：</p>
+<p><img alt="对称加密图示" src="images/对称加密图示.png"></p>
+<blockquote>
+<p>常见的对称加密算法：</p>
+</blockquote>
+<h3>非对称加密</h3>
+<p>如果 A 和 B 在加密和解密的时候，不使用同一个密码进行。这种加密就是“非对称加密”。如图所示：</p>
+<p><img alt="非对称加密图示" src="images/非对称加密图示.png"></p>
+<p>其中 KEY_A 可以叫做“私钥”，KEY_B 可以叫做“公钥”。</p>
       </div>
       <footer class="post-footer">
         <div class="meta">
             分类： «<a href="/category/qi-ta.html">其他</a>» 
-            作者： <a href="/author/xty.html">xty</a><br />
-            标签 :  #<a href="/tag/jia-mi-qian-ming-xin-xi-an-quan.html">加密、签名、信息安全</a>        </div>
+            作者： <a href="/author/tian-yu.html">天宇</a><br />
+            标签 :  #<a href="/tag/jia-mi.html">加密</a> #<a href="/tag/qian-ming.html">签名</a> #<a href="/tag/ha-xi-suan-fa.html">哈希算法</a> #<a href="/tag/xin-xi-an-quan.html">信息安全</a>        </div>
       </footer>
       </article> <!-- /#page-main -->
 

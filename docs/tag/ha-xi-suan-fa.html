@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
-  <title>无涯日记 — Articles avec le mot clé « token »</title>
+  <title>无涯日记 — Articles avec le mot clé « 哈希算法 »</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
   <link rel="stylesheet" type="text/css" href="/theme/css/theme.css" />
@@ -25,40 +25,49 @@
 
     <div id="page-body">
       <section id="page-main" role="main">
-      <h1 class="small-title">Articles avec le mot clé « token » :</h1>
+      <h1 class="small-title">Articles avec le mot clé « 哈希算法 » :</h1>
      
         
       <article class="post">
         <header class="post-header">
           <h1>
             <a rel="bookmark"
-               href="/jwt.html"
-               title="Lien permanent vers «JWT»">
-               JWT
+               href="/liao-jie-qian-ming-he-jia-mi.html"
+               title="Lien permanent vers «了解签名和加密»">
+               了解签名和加密
             </a>
           </h1>
           <div class="meta">
 <!-- includes/article_meta.html -->
 <time style="display: block; margin-top: 5px;"
-  datetime="2018-01-29T19:12:07+08:00">发布时间：2018-01-29 19:12:07</time>
+  datetime="2019-12-05T15:15:27+08:00">发布时间：2019-12-05 15:15:27</time>
 <a style="display: block; margin-top: 5px;"
-  href="/category/web.html" >分类：Web</a>
+  href="/category/qi-ta.html" >分类：其他</a>
 <a style="display: block; margin-top: 5px;"
-  href="/author/tian-yu.html">作者：天宇</a><br />标签:<a rel="tag" href="/tag/qian-hou-duan-fen-chi.html">前后端分离</a>, <a rel="tag" href="/tag/token.html">token</a>          </div>
+  href="/author/tian-yu.html">作者：天宇</a><br />标签:<a rel="tag" href="/tag/jia-mi.html">加密</a>, <a rel="tag" href="/tag/qian-ming.html">签名</a>, <a rel="tag" href="/tag/ha-xi-suan-fa.html">哈希算法</a>, <a rel="tag" href="/tag/xin-xi-an-quan.html">信息安全</a>          </div>
         </header>
         <div class="post-content"> 
-          <h2>什么是 JWT</h2>
-<p>JWT 是 JSON Web Token 的缩写。</p>
-<p>首先，JWT 是一个 token。</p>
-<p>JWT 是一个标准 <a href="https://tools.ietf.org/html/rfc7519"><strong>RFC 7519</strong></a>。定义了使用<strong>紧凑</strong>、<strong>自我描述</strong>的方式在服务端、客户端之间<strong>安全</strong>使用 JSON 传输信息的标准。</p>
-<p>简答的说，JWT 就是定义了如何生成 token 的标准。</p>
-<p>下面详细的解释下 JWT 定义的几个重要的关键词。</p>
+          <h2>总结</h2>
+<p>用一句话来解释签名和加密。</p>
 <ul>
-<li>紧凑：因为 JWT 数据量小的特性。JWT 可以通过拼接在URL、POST 或者 HTTP 头信息中传递。同样，因为数据量比较小，所以传输的效率也会很快。</li>
-<li>自我描述：JWT 携带的数据包括了所有关于用户的信息。这避免了服务端多次查询数据库所造成的性能损失 …</li></ul>
+<li>签名：确定发件人、避免信息在传输过程中内容被篡改。</li>
+<li>加密：避免信息在传输过程中被第三方窃取到内容。</li>
+</ul>
+<blockquote>
+<p>假设 A 给 B 发一条信息。B 可以根据签名，来判断这条信息是否来源于 A？是否是完整并且没有被被篡改？为了防止信息的内容被第三方窃取，A 和 B 可以约定一个只有他们自己可以看懂的加密方式，对信息进行加密，防止窃取。</p>
+</blockquote>
+<h2>签名</h2>
+<p>一个例子，A 要给 B 发一封电子邮件。</p>
+<p>下面开始思考。</p>
+<ol>
+<li>B 应该如何判断这封电子邮件是 A 发来的？</li>
+<li>如何保证 A 发送的信息没有被篡改过？</li>
+</ol>
+<p>为了解决问题 1，A 在信息中签上自己的名字，B 熟知 A 的笔迹，可以判断是否是 A 发过来的信息。</p>
+<p>但是上面的方案 …</p>
         </div>
         <footer class="post-footer">
-          <a class="readmore" href="/jwt.html">更多内容...</a>
+          <a class="readmore" href="/liao-jie-qian-ming-he-jia-mi.html">更多内容...</a>
         </footer>
       </article>
       <nav id="pagination">   <!-- <span id="first_page" class="a inactive">&#60;&#60;</span>
