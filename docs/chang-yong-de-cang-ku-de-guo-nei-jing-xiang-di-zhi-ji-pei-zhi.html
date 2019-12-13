@@ -14,6 +14,19 @@
 <meta name="author" content="xin" />
 <meta name="keywords" content="maven jcenter flutter 国内源" />
 <link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" />
+<script>
+  $(document).ready(function(e) {
+    $("#content").children().each(function(index, element) {
+      var tagName=$(this).get(0).tagName;
+      if(tagName.substr(0,1).toUpperCase()=="H"){  
+        var contentH=$(this).html();//获取内容
+        var markid="mark-"+tagName+"-"+index.toString();
+        $(this).attr("id",markid);//为当前h标签设置id
+        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#"+markid+"'>"+contentH+"</a>");//在目标DIV中添加内容   
+      }  
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -69,7 +82,7 @@
     href="/author/xin.html">xin</a></p>
 <p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/maven-jcenter-flutter-guo-nei-yuan.html">maven jcenter flutter 国内源</a></p>    </div>
   </div>
-  <div>
+  <div id="content">
     <h2>为什么切换国内源</h2>
 <p>由于不明的原因，访问一些网站会出现错误。换成国内源，提升开发速度。人生苦短。</p>
 <h2>阿里云提供的 maven</h2>
@@ -234,7 +247,9 @@
         </article>
       </div>
       <div class="col-sm-2">
-        <!-- 这个是目录 -->
+        <div class="list-group sticky-top" id="mulu">
+          <!-- 这个是目录 -->
+        </div>
       </div>
     </div>
   </div>
@@ -246,8 +261,10 @@
       <footer id="page-foot">
         <script
           type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;"> 个人学习日记，所有文章遵循 WTFPL </p>
-        <p class="small text-muted"  style="margin-top: 0;"><a  class="small text-muted" href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
+        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;">
+          个人学习日记，所有文章遵循 WTFPL </p>
+        <p class="small text-muted" style="margin-top: 0;"><a class="small text-muted"
+            href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
       </footer>
     </div>
   </div>

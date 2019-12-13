@@ -14,6 +14,19 @@
 <meta name="author" content="天宇" />
 <meta name="keywords" content="加密、签名、证书, Java, Python" />
 <link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" />
+<script>
+  $(document).ready(function(e) {
+    $("#content").children().each(function(index, element) {
+      var tagName=$(this).get(0).tagName;
+      if(tagName.substr(0,1).toUpperCase()=="H"){  
+        var contentH=$(this).html();//获取内容
+        var markid="mark-"+tagName+"-"+index.toString();
+        $(this).attr("id",markid);//为当前h标签设置id
+        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#"+markid+"'>"+contentH+"</a>");//在目标DIV中添加内容   
+      }  
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -69,7 +82,7 @@
     href="/author/tian-yu.html">天宇</a></p>
 <p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/jia-mi-qian-ming-zheng-shu.html">加密、签名、证书</a>,   <a href="/tag/java.html">Java</a>,   <a href="/tag/python.html">Python</a></p>    </div>
   </div>
-  <div>
+  <div id="content">
     <h2>标准的 Base64 编码</h2>
 <p>先给出 RFC3548 给出的 Base64 定义。</p>
 <blockquote>
@@ -159,7 +172,9 @@
         </article>
       </div>
       <div class="col-sm-2">
-        <!-- 这个是目录 -->
+        <div class="list-group sticky-top" id="mulu">
+          <!-- 这个是目录 -->
+        </div>
       </div>
     </div>
   </div>
@@ -171,8 +186,10 @@
       <footer id="page-foot">
         <script
           type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;"> 个人学习日记，所有文章遵循 WTFPL </p>
-        <p class="small text-muted"  style="margin-top: 0;"><a  class="small text-muted" href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
+        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;">
+          个人学习日记，所有文章遵循 WTFPL </p>
+        <p class="small text-muted" style="margin-top: 0;"><a class="small text-muted"
+            href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
       </footer>
     </div>
   </div>

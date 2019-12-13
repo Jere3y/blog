@@ -6,6 +6,19 @@
 <meta name="author" content="{{ article.author or DEFAULT_AUTHOR }}" />
 <meta name="keywords" content="{{ article.tags|join(', ') }}" />
 <link rel="stylesheet" media="not print" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" />
+<script>
+  $(document).ready(function(e) {
+    $("#content").children().each(function(index, element) {
+      var tagName=$(this).get(0).tagName;
+      if(tagName.substr(0,1).toUpperCase()=="H"){  
+        var contentH=$(this).html();//获取内容
+        var markid="mark-"+tagName+"-"+index.toString();
+        $(this).attr("id",markid);//为当前h标签设置id
+        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#"+markid+"'>"+contentH+"</a>");//在目标DIV中添加内容   
+      }  
+    });
+  });
+</script>
 {% endblock %}
 
 {% block title %}{{ article.title }} — {{ super() }}{% endblock %}
@@ -23,7 +36,7 @@
       {% include "includes/article_meta.html" %}
     </div>
   </div>
-  <div>
+  <div id="content">
     {{ article.content}}
   </div>
 </div>
