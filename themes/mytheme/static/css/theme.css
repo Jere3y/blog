@@ -10,11 +10,10 @@
 
 
 body {
-    font-family: "Lucida Grande", "Gargi_1.7", "Garuda", "Jamrul", "Loma", "Malayalam", "Mukti Narrow", sans-serif;
     font-size: 16px;
     line-height: 1.5em;
-    color: #222;
-    background-color: #FAFAFA;
+    color: #000;
+    background-color: #FAF9DE;
     -webkit-animation: fade 600ms 1 ease-in-out;
     -moz-animation: fade 600ms 1 ease-in-out;
     -ms-animation: fade 600ms 1 ease-in-out;
@@ -26,7 +25,6 @@ h1, h2, h3,
 h4, h5, h6,
 .meta {
     color: #000;
-    font-family: "Century Schoolbook L", "Georgia", "Nimbus Roman No9 L", "Norasi", "Rekha", serif;
     line-height: 1.1em;
 }
 
