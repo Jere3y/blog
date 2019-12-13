@@ -21,16 +21,16 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-2">
+      <div class="col-sm-2">
         {%- include "includes/sidebar.html" -%}
       </div>
-      <div class="col-8">
+      <div class="col-sm-8">
         <{%- if article %}article class="post" {% else %}section {% endif -%}id="page-main" role="main">
           {% block content %}
           {% endblock content %}
         </{%- if article %}article{% else %}section{% endif -%}>
       </div>
-      <div class="col-2">
+      <div class="col-sm-2">
         <!-- 这个是目录 -->
       </div>
     </div>
