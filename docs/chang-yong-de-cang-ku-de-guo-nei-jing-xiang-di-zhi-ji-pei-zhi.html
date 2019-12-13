@@ -15,15 +15,15 @@
 <meta name="keywords" content="maven jcenter flutter 国内源" />
 <link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" />
 <script>
-  $(document).ready(function(e) {
-    $("#content").children().each(function(index, element) {
-      var tagName=$(this).get(0).tagName;
-      if(tagName.substr(0,1).toUpperCase()=="H"){  
-        var contentH=$(this).html();//获取内容
-        var markid="mark-"+tagName+"-"+index.toString();
-        $(this).attr("id",markid);//为当前h标签设置id
-        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#"+markid+"'>"+contentH+"</a>");//在目标DIV中添加内容   
-      }  
+  $(document).ready(function (e) {
+    $("#content").children().each(function (index, element) {
+      var tagName = $(this).get(0).tagName;
+      if (tagName.substr(0, 1).toUpperCase() == "H") {
+        var contentH = $(this).html();//获取内容
+        var markid = "mark-" + tagName + "-" + index.toString();
+        $(this).attr("id", markid);//为当前h标签设置id
+        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
+      }
     });
   });
 </script>
@@ -67,8 +67,7 @@
 <div style="margin-bottom: 2em;">
   <div>
     <h1>
-      <a rel="bookmark" href="/chang-yong-de-cang-ku-de-guo-nei-jing-xiang-di-zhi-ji-pei-zhi.html"
-        title="«常用的仓库的国内镜像地址及配置»">
+      <a rel="bookmark" href="/chang-yong-de-cang-ku-de-guo-nei-jing-xiang-di-zhi-ji-pei-zhi.html" title="«常用的仓库的国内镜像地址及配置»">
         常用的仓库的国内镜像地址及配置
       </a>
     </h1>
@@ -226,28 +225,11 @@
 
 
 
-<!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
-    <script type="text/javascript">
-     (function(d, s) {
-         var j, e = d.getElementsByTagName(s)[0];
-  
-         if (typeof LivereTower === 'function') { return; }
-  
-         j = d.createElement(s);
-         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-         j.async = true;
-  
-         e.parentNode.insertBefore(j, e);
-     })(document, 'script');
-    </script>
-  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-  </div>
-  <!-- City版安装代码已完成 -->
+
         </article>
       </div>
       <div class="col-sm-2">
-        <div class="list-group sticky-top" id="mulu">
+        <div class="list-group sticky-top" id="mulu" style="margin-bottom: 2em;margin-top:2em">
           <!-- 这个是目录 -->
         </div>
       </div>
@@ -255,6 +237,24 @@
   </div>
 
 
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') { return; }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
 
   <div class="jumbotron text-center" style="margin-bottom:0">
     <div class="mx-auto">
@@ -262,7 +262,7 @@
         <script
           type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
         <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;">
-          个人学习日记，所有文章遵循 WTFPL </p>
+          ©2016-2019 wuyariji.com 无涯日记，所有文章遵循 WTFPL </p>
         <p class="small text-muted" style="margin-top: 0;"><a class="small text-muted"
             href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
       </footer>

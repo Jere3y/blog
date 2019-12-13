@@ -7,15 +7,15 @@
 <meta name="keywords" content="{{ article.tags|join(', ') }}" />
 <link rel="stylesheet" media="not print" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" />
 <script>
-  $(document).ready(function(e) {
-    $("#content").children().each(function(index, element) {
-      var tagName=$(this).get(0).tagName;
-      if(tagName.substr(0,1).toUpperCase()=="H"){  
-        var contentH=$(this).html();//获取内容
-        var markid="mark-"+tagName+"-"+index.toString();
-        $(this).attr("id",markid);//为当前h标签设置id
-        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#"+markid+"'>"+contentH+"</a>");//在目标DIV中添加内容   
-      }  
+  $(document).ready(function (e) {
+    $("#content").children().each(function (index, element) {
+      var tagName = $(this).get(0).tagName;
+      if (tagName.substr(0, 1).toUpperCase() == "H") {
+        var contentH = $(this).html();//获取内容
+        var markid = "mark-" + tagName + "-" + index.toString();
+        $(this).attr("id", markid);//为当前h标签设置id
+        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
+      }
     });
   });
 </script>
@@ -27,8 +27,7 @@
 <div style="margin-bottom: 2em;">
   <div>
     <h1>
-      <a rel="bookmark" href="{{ SITEURL }}/{{ article.url }}"
-        title="«{{ article.title|striptags }}»">
+      <a rel="bookmark" href="{{ SITEURL }}/{{ article.url }}" title="«{{ article.title|striptags }}»">
         {{ article.title }}
       </a>
     </h1>
@@ -43,22 +42,27 @@
 
 
 
+
+{% endblock content -%}
+
+{% block comment %}
 <!-- 来必力City版安装代码 -->
 <div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
-    <script type="text/javascript">
-     (function(d, s) {
-         var j, e = d.getElementsByTagName(s)[0];
-  
-         if (typeof LivereTower === 'function') { return; }
-  
-         j = d.createElement(s);
-         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-         j.async = true;
-  
-         e.parentNode.insertBefore(j, e);
-     })(document, 'script');
-    </script>
+  <script type="text/javascript">
+    (function (d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') { return; }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
   <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-  </div>
-  <!-- City版安装代码已完成 -->
-{% endblock content -%}
+</div>
+<!-- City版安装代码已完成 -->
+
+{% endblock comment %}

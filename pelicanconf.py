@@ -42,4 +42,4 @@ ALTERNATE_FONTS = False
 TAGS_IN_MOBILE_SIDEBAR = False
 NEW_ANALYTICS = False
 ANALYTICS_DOMAIN = ''
-FOOTER_TEXT = '个人学习日记，所有文章遵循 WTFPL '
+FOOTER_TEXT = '©2016-2019 wuyariji.com 无涯日记，所有文章遵循 WTFPL '
