@@ -4,52 +4,53 @@
 <head>
   {% block headers %}
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
-  <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
   <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
   <!--[if lte IE 8]><script type="text/javascript" src="{{ SITEURL }}/theme/js/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/skeleton.css" />
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/theme.css" />
-  <link rel="shortcut icon" type="image/png" href="{{ SITEURL }}/favicon.png" />
-  <!--[if lte IE 8]><link rel="shortcut icon" type="image/x-icon" href="{{ SITEURL }}/favicon.ico" /><![endif]-->
-  <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} — Flux Atom"
-    href="{{ SITEURL }}/{{ FEED_ATOM }}" />
-  {% if FEED_RSS %}
-  <link rel="alternate" type="application/rss+xml" title="{{ SITENAME }} — Flux RSS"
-    href="{{ SITEURL }}/{{ FEED_RSS }}" />
-  {% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   {% endblock headers %}
 </head>
 
 <body>
-  <div id="page">
-    <header id="page-head">
-      <h1>
-        <a href="{{ SITEURL }}/index.html">{{ SITENAME }}</a>
-      </h1>
-    </header>
-
-    <div id="page-body">
-      <{%- if article %}article class="post" {% else %}section {% endif -%}id="page-main" role="main">
-        {% block content %}
-        {% endblock content %}
-      </{%- if article %}article{% else %}section{% endif -%}> <!-- /#page-main -->
-
-      <aside id="page-side">
+  <div class="jumbotron text-center">
+    <h1>{{ SITENAME }}</h1>
+    <p>生有涯，学无涯！</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
         {%- include "includes/sidebar.html" -%}
-      </aside> <!-- /#page-side -->
-    </div> <!-- /#page-body -->
+      </div>
+      <div class="col-8">
+        <{%- if article %}article class="post" {% else %}section {% endif -%}id="page-main" role="main">
+          {% block content %}
+          {% endblock content %}
+        </{%- if article %}article{% else %}section{% endif -%}>
+      </div>
+      <div class="col-2">
+        <!-- 这个是目录 -->
+      </div>
+    </div>
+  </div>
 
-    <footer id="page-foot">
-      <script
-        type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
-      <p> {{ FOOTER_TEXT or 'Powered by <a href="http://pelican.readthedocs.org">Pelican</a>' }}</p>
 
-      <p><a href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
-      {% if GITHUB_URL %}<p><a id="github-link" href="{{ GITHUB_URL}}">Fork me on Github</a></p>{% endif %}
-    </footer>
-  </div> <!-- /#page -->
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <div class="mx-auto">
+      <footer id="page-foot">
+        <script
+          type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;"> {{ FOOTER_TEXT or 'Powered by <a href="http://pelican.readthedocs.org">Pelican</a>' }}</p>
+        <p class="small text-muted"  style="margin-top: 0;"><a  class="small text-muted" href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
+        {% if GITHUB_URL %}<p><a id="github-link" href="{{ GITHUB_URL}}">Fork me on Github</a></p>{% endif %}
+      </footer>
+    </div>
+  </div>
+
+
 </body>
 
 </html>

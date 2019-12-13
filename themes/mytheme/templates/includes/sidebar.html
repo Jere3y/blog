@@ -1,55 +1,54 @@
+<!-- begin includes/sidebar.html -->
+<nav>
+  <h4>页面</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/index.html">首页</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/categories.html">文章分类</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/archives.html">归档</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/tags.html">标签</a></li>
+    {% if MENUITEMS %}
+    {% for name, uri in MENUITEMS %}
+    <li class="nav-item"><a class="nav-link" href="{{ uri|format(SITEURL)}}">{{ name }}</a></li>
+    {% endfor %}
+    {% endif %}
+    {% if DISPLAY_PAGES_ON_MENU %}
+    {% for p in pages %}
+    <li class="nav-item"><a class="nav-link" href="{{ SITEURL}}/{{ p.url }}" {% if p == page %} class="active" {% endif %}>{{ p.title }}</a></li>
+    {% endfor %}
+    {% endif %}
+  </ul>
+</nav>
 
-          <!-- begin includes/sidebar.html -->
-          <nav>
-            <h3>页面</h3>
-            <ul>
-              <li><a href="{{ SITEURL }}/index.html">首页</a></li>
-              <li><a href="{{ SITEURL }}/categories.html">文章分类</a></li>
-              <li><a href="{{ SITEURL }}/archives.html">归档</a></li>
-              <li><a href="{{ SITEURL }}/tags.html">标签</a></li>
-            {% if MENUITEMS %}
-              {% for name, uri in MENUITEMS %}
-              <li><a href="{{ uri|format(SITEURL)}}">{{ name }}</a></li>
-              {% endfor %}
-            {% endif %}
-            {% if DISPLAY_PAGES_ON_MENU %}
-              {% for p in pages %}
-              <li><a href="{{ SITEURL}}/{{ p.url }}"{% if p == page %} class="active"{% endif %}>{{ p.title }}</a></li>
-              {% endfor %}
-            {% endif %}
-            </ul>
-          </nav>
+{% if categories %}
+<nav>
+  <h4>文章分类</h4>
+  <ul class="nav flex-column">
+    {% for cat, null in categories %}
+    <li class="nav-item"{%- if cat == category %} class="active" {% endif -%}><a class="nav-link" href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+      {% endfor %}
+  </ul>
+</nav>
+{% endif %}
 
-          {% if categories %}
-          <nav>
-            <h3>文章分类</h3>
-            <ul>
-            {% for cat, null in categories %}
-              <li{%- if cat == category %} class="active"{% endif -%}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-            {% endfor %}
-            </ul>
-          </nav>
-          {% endif %}
-
-          <nav>
-            <h3>链接</h3>
-            <ul>
-            {% if FEED_ATOM %}
-              <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}">Flux ATOM</a></li>
-            {% endif %}
-            {% if FEED_RSS %}
-              <li><a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}">Flux RSS</a></li>
-            {% endif %}
-            {% if SOCIAL %}
-              {% for name, url in SOCIAL %}
-              <li><a href="{{ url }}">{{ name }}</a></li>
-              {% endfor %}
-            {% endif %}
-            {% if LINKS %}
-              {% for name, url in LINKS %}
-              <li><a href="{{ url }}">{{ name }}</a></li>
-              {% endfor %}
-            {% endif %}
-            </ul>
-          </nav>
-          <!-- end includes/sidebar.html -->
+<nav>
+  <h4>链接</h4>
+  <ul  class="nav flex-column">
+    {% if FEED_ATOM %}
+    <li class="nav-item"><a class="nav-link" href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}">Flux ATOM</a></li>
+    {% endif %}
+    {% if FEED_RSS %}
+    <li class="nav-item"><a class="nav-link" href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}">Flux RSS</a></li>
+    {% endif %}
+    {% if SOCIAL %}
+    {% for name, url in SOCIAL %}
+    <li class="nav-item"><a class="nav-link" href="{{ url }}">{{ name }}</a></li>
+    {% endfor %}
+    {% endif %}
+    {% if LINKS %}
+    {% for name, url in LINKS %}
+    <li class="nav-item"><a class="nav-link" href="{{ url }}">{{ name }}</a></li>
+    {% endfor %}
+    {% endif %}
+  </ul>
+</nav>
+<!-- end includes/sidebar.html -->

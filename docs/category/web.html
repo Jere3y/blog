@@ -3,51 +3,69 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=endge, chrome=IE8" />
-  <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
   <title>无涯日记 — «Web» 中的所有文章</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css" />
-  <link rel="stylesheet" type="text/css" href="/theme/css/theme.css" />
-  <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-  <!--[if lte IE 8]><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><![endif]-->
-  <link rel="alternate" type="application/atom+xml" title="无涯日记 — Flux Atom"
-    href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <div id="page">
-    <header id="page-head">
-      <h1>
-        <a href="/index.html">无涯日记</a>
-      </h1>
-    </header>
+  <div class="jumbotron text-center">
+    <h1>无涯日记</h1>
+    <p>生有涯，学无涯！</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-2"><!-- begin includes/sidebar.html -->
+<nav>
+  <h4>页面</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/index.html">首页</a></li>
+    <li class="nav-item"><a class="nav-link" href="/categories.html">文章分类</a></li>
+    <li class="nav-item"><a class="nav-link" href="/archives.html">归档</a></li>
+    <li class="nav-item"><a class="nav-link" href="/tags.html">标签</a></li>
+  </ul>
+</nav>
 
-    <div id="page-body">
-      <section id="page-main" role="main">
-      <h1 class="small-title">文章分类： <i>«Web»</i> :</h1>
-     
-        
-      <article class="post">
-        <header class="post-header">
-          <h1>
-            <a rel="bookmark"
-               href="/jwt.html"
-               title="Lien permanent vers «JWT»">
-               JWT
-            </a>
-          </h1>
-          <div class="meta">
+<nav>
+  <h4>文章分类</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/web.html">Web</a></li>
+  </ul>
+</nav>
+
+<nav>
+  <h4>链接</h4>
+  <ul  class="nav flex-column">
+  </ul>
+</nav>
+<!-- end includes/sidebar.html --></div>
+      <div class="col-8">
+        <section id="page-main" role="main">
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
+      <a href="/jwt.html" title="«JWT»">
+        JWT
+      </a>
+    </h1>
+    <div class="meta">
 <!-- includes/article_meta.html -->
-<time style="display: block; margin-top: 5px;"
-  datetime="2018-01-29T19:12:07+08:00">发布时间：2018-01-29 19:12:07</time>
-<a style="display: block; margin-top: 5px;"
-  href="/category/web.html" >分类：Web</a>
-<a style="display: block; margin-top: 5px;"
-  href="/author/tian-yu.html">作者：天宇</a><br />标签:<a rel="tag" href="/tag/qian-hou-duan-fen-chi.html">前后端分离</a>, <a rel="tag" href="/tag/token.html">token</a>          </div>
-        </header>
-        <div class="post-content"> 
-          <h2>什么是 JWT</h2>
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2018-01-29 19:12:07</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/web.html">Web</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/qian-hou-duan-fen-chi.html">前后端分离</a>,   <a href="/tag/token.html">token</a></p>    </div>
+  </div>
+  <div class="card-body">
+    <h2>什么是 JWT</h2>
 <p>JWT 是 JSON Web Token 的缩写。</p>
 <p>首先，JWT 是一个 token。</p>
 <p>JWT 是一个标准 <a href="https://tools.ietf.org/html/rfc7519"><strong>RFC 7519</strong></a>。定义了使用<strong>紧凑</strong>、<strong>自我描述</strong>的方式在服务端、客户端之间<strong>安全</strong>使用 JSON 传输信息的标准。</p>
@@ -56,56 +74,39 @@
 <ul>
 <li>紧凑：因为 JWT 数据量小的特性。JWT 可以通过拼接在URL、POST 或者 HTTP 头信息中传递。同样，因为数据量比较小，所以传输的效率也会很快。</li>
 <li>自我描述：JWT 携带的数据包括了所有关于用户的信息。这避免了服务端多次查询数据库所造成的性能损失 …</li></ul>
-        </div>
-        <footer class="post-footer">
-          <a class="readmore" href="/jwt.html">更多内容...</a>
-        </footer>
-      </article>
-      <nav id="pagination">   <!-- <span id="first_page" class="a inactive">&#60;&#60;</span>
+  </div>
+  <div class="card-footer text-right">
+    <a class="card-link" href="/jwt.html">查看全文</a>
+  </div>
+</div>
+<div style="height: 2em;"></div>
+<nav id="pagination">  <!-- <span id="first_page" class="a inactive">&#60;&#60;</span>
         <span id="first_page" class="a inactive">&#60;</span> -->
-        <span class="a active">1</span>
-   <!-- <span id="next_page" class="a inactive">&#62;</span>
+  <span class="a active">1</span>
+  <!-- <span id="next_page" class="a inactive">&#62;</span>
         <span id="next_page" class="a inactive">&#62;&#62;</span> -->
-</nav>      </section> <!-- /#page-main -->
+</nav>        </section>
+      </div>
+      <div class="col-2">
+        <!-- 这个是目录 -->
+      </div>
+    </div>
+  </div>
 
-      <aside id="page-side">
-          <!-- begin includes/sidebar.html -->
-          <nav>
-            <h3>页面</h3>
-            <ul>
-              <li><a href="/index.html">首页</a></li>
-              <li><a href="/categories.html">文章分类</a></li>
-              <li><a href="/archives.html">归档</a></li>
-              <li><a href="/tags.html">标签</a></li>
-            </ul>
-          </nav>
 
-          <nav>
-            <h3>文章分类</h3>
-            <ul>
-              <li><a href="/category/python.html">Python</a></li>
-              <li><a href="/category/qi-ta.html">其他</a></li>
-              <li class="active"><a href="/category/web.html">Web</a></li>
-            </ul>
-          </nav>
 
-          <nav>
-            <h3>链接</h3>
-            <ul>
-            </ul>
-          </nav>
-          <!-- end includes/sidebar.html --></aside> <!-- /#page-side -->
-    </div> <!-- /#page-body -->
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <div class="mx-auto">
+      <footer id="page-foot">
+        <script
+          type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;"> 个人学习日记，所有文章遵循 WTFPL </p>
+        <p class="small text-muted"  style="margin-top: 0;"><a  class="small text-muted" href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
+      </footer>
+    </div>
+  </div>
 
-    <footer id="page-foot">
-      <script
-        type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
-      <p> 个人学习日记，所有文章遵循 WTFPL </p>
-
-      <p><a href="http://www.beian.miit.gov.cn" target="_blank">黑ICP备18002344号-1</a></p>
-    </footer>
-  </div> <!-- /#page -->
 </body>
 
 </html>

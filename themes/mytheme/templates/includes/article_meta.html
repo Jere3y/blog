@@ -1,20 +1,15 @@
 <!-- includes/article_meta.html -->
-<time style="display: block; margin-top: 5px;"
-  datetime="{{ article.date.isoformat() }}">{{ '发布时间：'+article.locale_date }}</time>
-<a style="display: block; margin-top: 5px;"
-  href="{{ SITEURL }}/{{ article.category.url }}" >分类：{{ article.category }}</a>
-<a style="display: block; margin-top: 5px;"
-  href="{{ SITEURL }}/{{ article.author.url }}">作者：{{  article.author }}</a>
-{%- if article.tags %}
-<br />标签:
-{%- for tag in article.tags %}
-<a rel="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-{% endfor -%}
-{% endif -%}
-{%- if article.translations %}
-<br />Langues:
-[<a href="{{ SITEURL }}/{{ article.url }}">{{ article.lang or DEFAULT_LANG }}</a>]
-{%- for translation in article.translations %}
-<a href="{{ SITEURL }}/{{ translation.url }}">{{ translation.lang }}</a>
-{% endfor -%}
-{% endif -%}
+<p class="small text-muted" style="margin-bottom: 0">发布时间：{{ article.locale_date }}</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="{{ SITEURL }}/{{ article.author.url }}">{{  article.author }}</a></p>
+<p class="small text-muted" style="margin-bottom: 0">
+  {%- if article.tags %}
+  标签：
+  {%- for tag in article.tags %}
+  <a href="{{ SITEURL }}/{{ tag.url }}">{{tag}}</a>{% if not loop.last %}, {% endif %}
+  {% endfor -%}
+  {% endif -%}
+</p>
