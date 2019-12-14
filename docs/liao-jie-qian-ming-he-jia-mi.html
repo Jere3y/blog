@@ -13,10 +13,17 @@
 
 <meta name="author" content="天宇" />
 <meta name="keywords" content="加密, 签名, 哈希算法, 信息安全" />
-<link rel="stylesheet" media="not print" type="text/css" href="/theme/css/pygments.css" />
+<link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 <script>
   $(document).ready(function (e) {
     $("#content").children().each(function (index, element) {
+      $("table").attr("class","table table-bordered small");
+      $("blockquote").attr("class","blockquote small");
+      $('pre').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
       var tagName = $(this).get(0).tagName;
       if (tagName.substr(0, 1).toUpperCase() == "H") {
         var contentH = $(this).html();//获取内容
@@ -57,9 +64,9 @@
 </nav>
 
 <nav>
-  <h4>链接</h4>
+  <!-- <h4>链接</h4>
   <ul  class="nav flex-column">
-  </ul>
+  </ul> -->
 </nav>
 <!-- end includes/sidebar.html --></div>
       <div class="col-sm-8">
@@ -88,9 +95,7 @@
 <li>签名：确定发件人、避免信息在传输过程中内容被篡改。</li>
 <li>加密：避免信息在传输过程中被第三方窃取到内容。</li>
 </ul>
-<blockquote>
 <p>假设 A 给 B 发一条信息。B 可以根据签名，来判断这条信息是否来源于 A？是否是完整并且没有被被篡改？为了防止信息的内容被第三方窃取，A 和 B 可以约定一个只有他们自己可以看懂的加密方式，对信息进行加密，防止窃取。</p>
-</blockquote>
 <h2>签名</h2>
 <p>一个例子，A 要给 B 发一封电子邮件。</p>
 <p>下面开始思考。</p>
@@ -201,9 +206,6 @@
     </div>
   </div>
 </div>
-<!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
 
   <div class="jumbotron text-center" style="margin-bottom:0">
     <div class="mx-auto">

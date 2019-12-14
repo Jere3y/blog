@@ -5,10 +5,17 @@
 {{ super() }}
 <meta name="author" content="{{ article.author or DEFAULT_AUTHOR }}" />
 <meta name="keywords" content="{{ article.tags|join(', ') }}" />
-<link rel="stylesheet" media="not print" type="text/css" href="{{ SITEURL }}/theme/css/pygments.css" />
+<link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 <script>
   $(document).ready(function (e) {
     $("#content").children().each(function (index, element) {
+      $("table").attr("class","table table-bordered small");
+      $("blockquote").attr("class","blockquote small");
+      $('pre').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
       var tagName = $(this).get(0).tagName;
       if (tagName.substr(0, 1).toUpperCase() == "H") {
         var contentH = $(this).html();//获取内容
@@ -75,8 +82,5 @@
     </div>
   </div>
 </div>
-<!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
 
 {% endblock comment %}
