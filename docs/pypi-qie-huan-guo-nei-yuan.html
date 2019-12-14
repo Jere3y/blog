@@ -14,7 +14,7 @@
 <meta name="author" content="xin" />
 <meta name="keywords" content="国内源" />
 <link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
-<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
   $(document).ready(function (e) {
@@ -90,24 +90,24 @@
   </div>
   <div id="content">
     <h2>临时使用</h2>
-<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="k">some</span><span class="o">-</span><span class="n">package</span>
 </pre></div>
 
 
 <p>some-package 是想要安装的包的名字。例如，想要安装 requests</p>
-<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="n">requests</span>
 </pre></div>
 
 
 <h2>设为默认</h2>
 <p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
-<div class="highlight"><pre><span></span>pip install pip -U
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pip</span> <span class="o">-</span><span class="n">U</span>
+<span class="n">pip</span> <span class="n">config</span> <span class="k">set</span> <span class="k">global</span><span class="p">.</span><span class="k">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span>
 </pre></div>
 
 
 <p>如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：</p>
-<div class="highlight"><pre><span></span>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="n">pip</span> <span class="o">-</span><span class="n">U</span>
 </pre></div>
 
 
