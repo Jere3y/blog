@@ -18,12 +18,12 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
   $(document).ready(function (e) {
-    $("#content").children().each(function (index, element) {
-      $("table").attr("class","table table-bordered small");
+    $("table").attr("class","table table-bordered small");
       $("blockquote").attr("class","blockquote small");
       $('pre').each(function(i, block) {
         hljs.highlightBlock(block);
       });
+    $("#content").children().each(function (index, element) {
       var tagName = $(this).get(0).tagName;
       if (tagName.substr(0, 1).toUpperCase() == "H") {
         var contentH = $(this).html();//获取内容
