@@ -17,7 +17,7 @@
 <script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
-  $(document).ready(function (e) {
+  $(function (e) {
     $("table").attr("class","table table-bordered small");
       $("blockquote").attr("class","blockquote small");
       $('pre').each(function(i, block) {
@@ -121,8 +121,8 @@
 <h3>头信息（Header）</h3>
 <p>头信息就是对 JWT 整体的描述。包括两个部分：1. 数据的类型（typ），就是 JWT。2. 签名使用的算法(alg)，像下面这样；</p>
 <div class="highlight"><pre><span></span><span class="err">{</span>
-    <span class="ss">&quot;typ&quot;</span><span class="p">:</span><span class="ss">&quot;JWT&quot;</span><span class="p">,</span>
-    <span class="ss">&quot;alg&quot;</span><span class="p">:</span><span class="ss">&quot;HS256&quot;</span>
+<span class="err">    &quot;typ&quot;:&quot;JWT&quot;,</span>
+<span class="err">    &quot;alg&quot;:&quot;HS256&quot;</span>
 <span class="err">}</span>
 </pre></div>
 
@@ -137,9 +137,9 @@
 </ol>
 <p>一个荷载的样子应该是这样:</p>
 <div class="highlight"><pre><span></span><span class="err">{</span>
-    <span class="ss">&quot;sub&quot;</span><span class="p">:</span><span class="ss">&quot;1&quot;</span><span class="p">,</span>
-    <span class="ss">&quot;name&quot;</span><span class="p">:</span><span class="ss">&quot;Jack&quot;</span><span class="p">,</span>
-    <span class="ss">&quot;admin&quot;</span><span class="p">:</span><span class="k">true</span>
+<span class="err">    &quot;sub&quot;:&quot;1&quot;,</span>
+<span class="err">    &quot;name&quot;:&quot;Jack&quot;,</span>
+<span class="err">    &quot;admin&quot;:true</span>
 <span class="err">}</span>
 </pre></div>
 
@@ -158,11 +158,11 @@
 </ol>
 <p>有了以上信息，就可以开始签名了。</p>
 <p>例如，如果要使用 HMAC SHA256 算法（密码是 secret）进行加密，代码如下：</p>
-<div class="highlight"><pre><span></span><span class="n">HMACSHA256</span><span class="p">(</span>
-    <span class="n">base64UrlEncode</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="ss">&quot;.&quot;</span> <span class="o">+</span>
-    <span class="n">base64UrlEncode</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
-    <span class="n">secret</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="err">HMACSHA256(</span>
+<span class="err">    base64UrlEncode(header) + &quot;.&quot; +</span>
+<span class="err">    base64UrlEncode(payload),</span>
+<span class="err">    secret</span>
+<span class="err">)</span>
 </pre></div>
 
 

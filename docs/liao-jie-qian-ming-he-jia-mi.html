@@ -17,7 +17,7 @@
 <script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
-  $(document).ready(function (e) {
+  $(function (e) {
     $("table").attr("class","table table-bordered small");
       $("blockquote").attr("class","blockquote small");
       $('pre').each(function(i, block) {
@@ -114,14 +114,14 @@
 
 <p>A 使用 MD5 算法，来签名这条信息，内容变成：</p>
 <div class="highlight"><pre><span></span><span class="err">明天十点老地方吃饭。</span>
-<span class="n">MD5</span><span class="p">:</span><span class="mi">0887</span><span class="n">F30C8A63DD13C6AF5EFBF003C80F</span>
+<span class="c">MD5:0887F30C8A63DD13C6AF5EFBF003C80F</span>
 </pre></div>
 
 
 <p>B 在接收到信息后，根据 MD5 算法，对照后，发现信息和签名完全对的上。</p>
 <p>但是，这时候就出现问题了。如果 C 也熟悉 MD5 算法，就可以修改上面一条信息，变成：</p>
 <div class="highlight"><pre><span></span><span class="err">明天九点老地方吃饭。</span>
-<span class="n">MD5</span><span class="p">:</span><span class="mi">513059</span><span class="n">EEDED204527E4BA9E5DDED101A</span>
+<span class="c">MD5:513059EEDED204527E4BA9E5DDED101A</span>
 </pre></div>
 
 
@@ -129,7 +129,7 @@
 <p>所以，A 和 B 之间需要约定一个“暗号”，这个暗号只有 A 和 B 知道。A 在对信息进行签名的时候，要加上“暗号”。例如，A 和 B 约定的暗号是：love</p>
 <p>A 发送给 B 的信息就变成（MD5("明天十点老地方吃饭。love")的值6F277AF59697AEBE0EBAB9421A6A8A9B）：</p>
 <div class="highlight"><pre><span></span><span class="err">明天十点老地方吃饭。</span>
-<span class="n">MD5</span><span class="p">:</span><span class="mi">6</span><span class="n">F277AF59697AEBE0EBAB9421A6A8A9B</span>
+<span class="c">MD5:6F277AF59697AEBE0EBAB9421A6A8A9B</span>
 </pre></div>
 
 

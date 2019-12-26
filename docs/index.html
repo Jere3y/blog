@@ -106,19 +106,19 @@
   </div>
   <div class="card-body">
     <h2>临时使用</h2>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="k">some</span><span class="o">-</span><span class="n">package</span>
+<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span>
 </pre></div>
 
 
 <p>some-package 是想要安装的包的名字。例如，想要安装 requests</p>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="k">simple</span> <span class="n">requests</span>
+<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests</span>
 </pre></div>
 
 
 <h2>设为默认</h2>
 <p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pip</span> <span class="o">-</span><span class="n">U</span>
-<span class="n">pip</span> <span class="n">config</span> <span class="k">set</span> <span class="k">global</span><span class="p">.</span><span class="k">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna …</span></pre></div>
+<div class="highlight"><pre><span></span><span class="err">pip install pip -U</span>
+<span class="err">pip config set global.index-url https://pypi.tuna.tsinghua.edu …</span></pre></div>
   </div>
   <div class="card-footer text-right">
     <a class="card-link" href="/pypi-qie-huan-guo-nei-yuan.html">查看全文</a>
@@ -172,6 +172,57 @@
   </div>
   <div class="card-footer text-right">
     <a class="card-link" href="/zai-ubuntu-shang-bu-shu-django-xiang-mu.html">查看全文</a>
+  </div>
+</div>
+<div style="height: 2em;"></div>
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
+      <a href="/python38-geng-xin-nei-rong.html" title="«Python3.8 更新内容»">
+        Python3.8 更新内容
+      </a>
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-10-16 08:06:00</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/python.html">Python</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/python38-geng-xin-nei-rong.html">Python3.8 更新内容</a></p>    </div>
+  </div>
+  <div class="card-body">
+    <h2>更新时间</h2>
+<p>Python3.8 版本在 2019 年 10 月 14 日更新。让我们看看<strong>对比 Python3.7</strong> 都更新了什么内容。</p>
+<p>本文只总结几个码代码时能用得到的新特性，诸如“性能提升”之类的，不在本文中详细说明。</p>
+<h2>新的赋值表达式</h2>
+<p><strong>:=</strong> 作为新增操作符，官方称为“海象运算符”。</p>
+<p>主要有以下作用：</p>
+<ol>
+<li>减少一些表达式的调用</li>
+<li>使代码更加优雅</li>
+<li>更加适当的作用域</li>
+</ol>
+<p>下面用一个简单的例子来说明，没有赋值表达式的情况：</p>
+<div class="highlight"><pre><span></span><span class="err"># size 的作用域</span>
+<span class="err">size = len(a)</span>
+<span class="err">if size == 10:</span>
+<span class="err">    return size</span>
+</pre></div>
+
+
+<p>使用了赋值表达式之后：</p>
+<div class="highlight"><pre><span></span><span class="err">if size := len(a):</span>
+<span class="err">    # size 的作用域</span>
+<span class="err">    return size</span>
+</pre></div>
+
+
+<p>具体关于赋值表达式的详细说明 …</p>
+  </div>
+  <div class="card-footer text-right">
+    <a class="card-link" href="/python38-geng-xin-nei-rong.html">查看全文</a>
   </div>
 </div>
 <div style="height: 2em;"></div>
