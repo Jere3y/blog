@@ -18,18 +18,20 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <script>
   $(function (e) {
-    $("table").attr("class","table table-bordered small");
-      $("blockquote").attr("class","blockquote small");
-      $('pre').each(function(i, block) {
-        hljs.highlightBlock(block);
-      });
+    $("table").attr("class", "table table-bordered small");
+    $("blockquote").attr("class", "blockquote small");
+    $('pre').each(function (i, block) {
+      hljs.highlightBlock(block);
+    });
+    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#" + '' + "'>" + '目录' + "</a>");
     $("#content").children().each(function (index, element) {
       var tagName = $(this).get(0).tagName;
       if (tagName.substr(0, 1).toUpperCase() == "H") {
         var contentH = $(this).html();//获取内容
         var markid = "mark-" + tagName + "-" + index.toString();
         $(this).attr("id", markid);//为当前h标签设置id
-        $("#mulu").append("<a class='list-group-item list-group-item-action' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
+        let spaceSize = parseInt(tagName.substr(1, 2)) - 2;
+        $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:" + spaceSize + "em;font-size:14px;' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
       }
     });
   });
@@ -73,10 +75,8 @@
         <article class="post" id="page-main" role="main">
 <div style="margin-bottom: 2em;">
   <div>
-    <h1>
-      <a rel="bookmark" href="/python38-geng-xin-nei-rong.html" title="«Python3.8 更新内容»">
+    <h1 id="title">
         Python3.8 更新内容
-      </a>
     </h1>
     <div class="meta">
 <!-- includes/article_meta.html -->
@@ -211,20 +211,20 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-2">
-     
+
     </div>
     <div class="col-sm-8">
       <div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
         <script type="text/javascript">
           (function (d, s) {
             var j, e = d.getElementsByTagName(s)[0];
-      
+
             if (typeof LivereTower === 'function') { return; }
-      
+
             j = d.createElement(s);
             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
             j.async = true;
-      
+
             e.parentNode.insertBefore(j, e);
           })(document, 'script');
         </script>
@@ -232,7 +232,7 @@
       </div>
     </div>
     <div class="col-sm-2">
-      
+
     </div>
   </div>
 </div>
