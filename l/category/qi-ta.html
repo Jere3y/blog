@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>无涯日记</title>
+  <title>无涯日记 — «其他» 中的所有文章</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
   <h4>文章分类</h4>
   <ul class="nav flex-column">
     <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
-    <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/web.html">Web</a></li>
   </ul>
 </nav>
@@ -153,131 +153,6 @@
 <div class="card">
   <div class="card-header">
     <h1 class="card-title">
-      <a href="/zai-ubuntu-shang-bu-shu-django-xiang-mu.html" title="«在 Ubuntu 上部署 Django 项目»">
-        在 Ubuntu 上部署 Django 项目
-      </a>
-    </h1>
-    <div class="meta">
-<!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-10-25 23:59:00</p>
-<p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/python.html">Python</a>
-</p>
-<p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/tian-yu.html">天宇</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/django.html">Django</a></p>    </div>
-  </div>
-  <div class="card-body">
-    <p>Ubuntu + Apache2 + mod_wsgi + Django</p>
-  </div>
-  <div class="card-footer text-right">
-    <a class="card-link" href="/zai-ubuntu-shang-bu-shu-django-xiang-mu.html">查看全文</a>
-  </div>
-</div>
-<div style="height: 2em;"></div>
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">
-      <a href="/python38-geng-xin-nei-rong.html" title="«Python3.8 更新内容»">
-        Python3.8 更新内容
-      </a>
-    </h1>
-    <div class="meta">
-<!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-10-16 08:06:00</p>
-<p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/python.html">Python</a>
-</p>
-<p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/tian-yu.html">天宇</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/python38-geng-xin-nei-rong.html">Python3.8 更新内容</a></p>    </div>
-  </div>
-  <div class="card-body">
-    <h2>更新时间</h2>
-<p>Python3.8 版本在 2019 年 10 月 14 日更新。让我们看看<strong>对比 Python3.7</strong> 都更新了什么内容。</p>
-<p>本文只总结几个码代码时能用得到的新特性，诸如“性能提升”之类的，不在本文中详细说明。</p>
-<h2>新的赋值表达式</h2>
-<p><strong>:=</strong> 作为新增操作符，官方称为“海象运算符”。</p>
-<p>主要有以下作用：</p>
-<ol>
-<li>减少一些表达式的调用</li>
-<li>使代码更加优雅</li>
-<li>更加适当的作用域</li>
-</ol>
-<p>下面用一个简单的例子来说明，没有赋值表达式的情况：</p>
-<div class="highlight"><pre><span></span><span class="err"># size 的作用域</span>
-<span class="err">size = len(a)</span>
-<span class="err">if size == 10:</span>
-<span class="err">    return size</span>
-</pre></div>
-
-
-<p>使用了赋值表达式之后：</p>
-<div class="highlight"><pre><span></span><span class="err">if size := len(a):</span>
-<span class="err">    # size 的作用域</span>
-<span class="err">    return size</span>
-</pre></div>
-
-
-<p>具体关于赋值表达式的详细说明 …</p>
-  </div>
-  <div class="card-footer text-right">
-    <a class="card-link" href="/python38-geng-xin-nei-rong.html">查看全文</a>
-  </div>
-</div>
-<div style="height: 2em;"></div>
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">
-      <a href="/python-han-shu-de-can-shu-xiang-jie.html" title="«Python 函数的参数详解»">
-        Python 函数的参数详解
-      </a>
-    </h1>
-    <div class="meta">
-<!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-10-12 21:23:48</p>
-<p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/python.html">Python</a>
-</p>
-<p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/tian-yu.html">天宇</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/python-can-shu.html">Python 参数</a>,   <a href="/tag/can-shu-mo-ren-zhi.html">参数默认值</a>,   <a href="/tag/guan-jian-zi-can-shu.html">关键字参数</a></p>    </div>
-  </div>
-  <div class="card-body">
-    <h2>Python 函数中的参数类型</h2>
-<p>定义 Python 函数时，可以指定函数中的参数传入类型</p>
-<ol>
-<li>只能按照位置传入的参数（Python3.8 新增内容）</li>
-<li>只能根据关键字传入的参数</li>
-<li>可以 1，也可以 2。既可以按照位置传入的、也可以根据关键字传入的参数</li>
-<li>接受余下所有位置参数的参数</li>
-<li>接收余下所有关键字参数的参数</li>
-</ol>
-<h2>简单的 Python 函数定义</h2>
-<p>我们都知道，可以使用关键字 def 来定义一个函数：</p>
-<div class="highlight"><pre><span></span><span class="err">def fun(a,b,c):</span>
-<span class="err">    print(f&quot;{a=}&quot;)</span>
-<span class="err">    print(f&quot;{b=}&quot;)</span>
-<span class="err">    print(f&quot;{c=}&quot;)</span>
-</pre></div>
-
-
-<h3>使用位置参数调用函数</h3>
-<p>在调用上面的函数时，使用：</p>
-<div class="highlight"><pre><span></span><span class="err">fun(1,2,3)</span>
-</pre></div>
-
-
-<p>程序运行时，会按照位置，将参数 …</p>
-  </div>
-  <div class="card-footer text-right">
-    <a class="card-link" href="/python-han-shu-de-can-shu-xiang-jie.html">查看全文</a>
-  </div>
-</div>
-<div style="height: 2em;"></div>
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">
       <a href="/bian-ma-ji-zhu-yi-base64.html" title="«编码技术（一）Base64»">
         编码技术（一）Base64
       </a>
@@ -311,39 +186,6 @@
   </div>
   <div class="card-footer text-right">
     <a class="card-link" href="/bian-ma-ji-zhu-yi-base64.html">查看全文</a>
-  </div>
-</div>
-<div style="height: 2em;"></div>
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">
-      <a href="/jwt.html" title="«JWT»">
-        JWT
-      </a>
-    </h1>
-    <div class="meta">
-<!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2018-01-29 19:12:07</p>
-<p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/web.html">Web</a>
-</p>
-<p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/tian-yu.html">天宇</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/qian-hou-duan-fen-chi.html">前后端分离</a>,   <a href="/tag/token.html">token</a></p>    </div>
-  </div>
-  <div class="card-body">
-    <h2>什么是 JWT</h2>
-<p>JWT 是 JSON Web Token 的缩写。</p>
-<p>首先，JWT 是一个 token。</p>
-<p>JWT 是一个标准 <a href="https://tools.ietf.org/html/rfc7519"><strong>RFC 7519</strong></a>。定义了使用<strong>紧凑</strong>、<strong>自我描述</strong>的方式在服务端、客户端之间<strong>安全</strong>使用 JSON 传输信息的标准。</p>
-<p>简答的说，JWT 就是定义了如何生成 token 的标准。</p>
-<p>下面详细的解释下 JWT 定义的几个重要的关键词。</p>
-<ul>
-<li>紧凑：因为 JWT 数据量小的特性。JWT 可以通过拼接在URL、POST 或者 HTTP 头信息中传递。同样，因为数据量比较小，所以传输的效率也会很快。</li>
-<li>自我描述：JWT 携带的数据包括了所有关于用户的信息。这避免了服务端多次查询数据库所造成的性能损失 …</li></ul>
-  </div>
-  <div class="card-footer text-right">
-    <a class="card-link" href="/jwt.html">查看全文</a>
   </div>
 </div>
 <div style="height: 2em;"></div>
