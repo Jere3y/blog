@@ -15,7 +15,7 @@
     $('pre').each(function (i, block) {
       hljs.highlightBlock(block);
     });
-    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#" + '' + "'>" + '目录' + "</a>");
+    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#'>" + '目录' + "</a>");
     $("#content").children().each(function (index, element) {
       var tagName = $(this).get(0).tagName;
       if (tagName.substr(0, 1).toUpperCase() == "H") {

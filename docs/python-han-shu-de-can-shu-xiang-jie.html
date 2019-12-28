@@ -23,7 +23,7 @@
     $('pre').each(function (i, block) {
       hljs.highlightBlock(block);
     });
-    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#" + '' + "'>" + '目录' + "</a>");
+    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#'>" + '目录' + "</a>");
     $("#content").children().each(function (index, element) {
       var tagName = $(this).get(0).tagName;
       if (tagName.substr(0, 1).toUpperCase() == "H") {
@@ -134,7 +134,7 @@
 </pre></div>
 
 
-<p>随便调换参数的位置，像以下这样，调用方式也是合法的：</p>
+<p>随便调换参数的位置，像以下这样的调用方式也是合法的：</p>
 <div class="highlight"><pre><span></span><span class="err">fun(b=1,a=2,c=3)</span>
 </pre></div>
 
@@ -159,7 +159,7 @@
 </pre></div>
 
 
-<p>注意，以下的调用时不合法的：</p>
+<p>注意，以下的调用是不合法的：</p>
 <div class="highlight"><pre><span></span><span class="err">fun(b=1,a=2,3)</span>
 </pre></div>
 
@@ -220,6 +220,118 @@
 </pre></div>
 
 
+<h2>接受余下所有位置参数的参数</h2>
+<p>在定义函数的时候，我们使用 * 在参数名称前面，表示<strong>该参数接受余下所有的位置参数。</strong></p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">accpet_all_pos_arg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{a=}&#39;</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{b=}&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="k">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+
+<span class="n">accpet_all_pos_arg</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+
+
+<p>控制台输出：</p>
+<div class="highlight"><pre><span></span><span class="err">a=1</span>
+<span class="err">b=2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="err">5</span>
+<span class="err">6</span>
+<span class="err">7</span>
+</pre></div>
+
+
+<p>其中参数 *args 接受了从第 3 位开始后的所有参数。</p>
+<p>*args 参数<strong>后面的参数必须是关键字参数</strong>。系统才能知道参数是如何传值的。</p>
+<h3>解包</h3>
+<p>定义 *args 时，可以接受余下所有的位置参数，我们可以使用 * 符号解包，传入一个元组(或者数组)。像这样：</p>
+<div class="highlight"><pre><span></span><span class="err">t = (4,5,6,7)</span>
+<span class="err"># t = [4,5,6,7]</span>
+<span class="err">accpet_all_pos_arg(1,2,*t)</span>
+</pre></div>
+
+
+<p>输出：</p>
+<div class="highlight"><pre><span></span><span class="err">a=1</span>
+<span class="err">b=2</span>
+<span class="err">4</span>
+<span class="err">5</span>
+<span class="err">6</span>
+<span class="err">7</span>
+</pre></div>
+
+
+<p>符号 * 自动将元组（或者数组）解包成为相应的位置参数。</p>
+<h4>解包的其他用法</h4>
+<p>我们可以使用解包符号 * 给元组（或者数组）进行切片，然后进行赋值：</p>
+<div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="k">c</span> <span class="o">=</span> <span class="n">t</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{a=}&#39;</span><span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{b=}&#39;</span><span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{c=}&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><span class="err">a=4</span>
+<span class="err">b=5</span>
+<span class="err">c=[6, 7]</span>
+</pre></div>
+
+
+<p>我们使用 *c 将数组的其余的元素都赋值给了 c。</p>
+<p>甚至还可以对字符串进行这种骚操作：</p>
+<div class="highlight"><pre><span></span><span class="err">t = &#39;hello&#39;</span>
+<span class="err">a, b, *c = t</span>
+<span class="err">print(f&#39;{a=}&#39;)</span>
+<span class="err">print(f&#39;{b=}&#39;)</span>
+<span class="err">print(f&#39;{c=}&#39;)</span>
+</pre></div>
+
+
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><span class="err">a=&#39;h&#39;</span>
+<span class="err">b=&#39;e&#39;</span>
+<span class="err">c=[&#39;l&#39;, &#39;l&#39;, &#39;o&#39;]</span>
+</pre></div>
+
+
+<h2>接收余下所有关键字参数的参数</h2>
+<p>同 <em>arg 一样的道理，我们在参数名字之前加上 </em>* 表示余下所有关键字参数的参数。</p>
+<div class="highlight"><pre><span></span><span class="n">def</span><span class="w"> </span><span class="n">accpet_all_kwag_arg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwags</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{a=}&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{b=}&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="p">(</span><span class="n">kwags</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">kwag</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">kwags</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">print</span><span class="p">(</span><span class="n">kwag</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">kwags</span><span class="o">[</span><span class="n">kwag</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+
+
+<span class="n">accpet_all_kwag_arg</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+
+
+<p>输出内容：</p>
+<div class="highlight"><pre><span></span><span class="err">a=1</span>
+<span class="err">b=2</span>
+<span class="err">{&#39;c&#39;: 3, &#39;d&#39;: 4}</span>
+<span class="err">c - 3</span>
+<span class="err">d - 4</span>
+</pre></div>
+
+
+<p>参数 **kwags 接受了所有余下的关键字参数。并且以字典（dict）的形式存储在 kwags 中。</p>
+<p>我们同样可以用 ** 解包，来传入一个字典到函数中。例如上面的函数我们也可以这样调用：</p>
+<div class="highlight"><pre><span></span><span class="err">kwags = {&#39;c&#39;: 3, &#39;d&#39;: 4}</span>
+<span class="err">accpet_all_kwag_arg(1, 2, **kwags)</span>
+</pre></div>
+
+
+<p>会输出和上面一样的结果。</p>
 <h2>参考</h2>
 <ol>
 <li><a href="https://docs.python.org/3.8/">Python docs</a></li>
