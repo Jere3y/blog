@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>PYPI 切换国内源 — 无涯日记</title>
+  <title>Dart List 列表的语法糖 — 无涯日记</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,8 +11,8 @@
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<meta name="author" content="xin" />
-<meta name="keywords" content="国内源" />
+<meta name="author" content="天宇" />
+<meta name="keywords" content="Dart语法糖, Dart列表操作" />
 <link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
 <script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
@@ -59,9 +59,9 @@
 <nav>
   <h4>文章分类</h4>
   <ul class="nav flex-column">
-    <li class="nav-item"><a class="nav-link" href="/category/dart.html">Dart</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/dart.html">Dart</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
-    <li class="nav-item" class="active" ><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/web.html">Web</a></li>
   </ul>
 </nav>
@@ -78,44 +78,72 @@
 <div style="margin-bottom: 2em;">
   <div>
     <h1 id="title">
-        PYPI 切换国内源
+        Dart List 列表的语法糖
     </h1>
     <div class="meta">
 <!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-11-20 23:59:00</p>
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-01-08 19:53:41</p>
 <p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/qi-ta.html">其他</a>
+  分类：<a href="/category/dart.html">Dart</a>
 </p>
 <p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/xin.html">xin</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/guo-nei-yuan.html">国内源</a></p>    </div>
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/dartyu-fa-tang.html">Dart语法糖</a>,   <a href="/tag/dartlie-biao-cao-zuo.html">Dart列表操作</a></p>    </div>
   </div>
   <div id="content">
-    <h2>临时使用</h2>
-<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span>
+    <h2>spread operator (...)</h2>
+<p>不知道咋翻译这个操作符。</p>
+<p>Dart 2.3 新增 ... 操作符。</p>
+<p>使用 ... 可以简单方便的把一个列表的所有元素插入到另一个列表中。</p>
+<div class="highlight"><pre><span></span><span class="err">var list = [1, 2, 3];</span>
+<span class="err">var list2 = [0, ...list];</span>
+<span class="err">assert(list2.length == 4);</span>
 </pre></div>
 
 
-<p>some-package 是想要安装的包的名字。例如，想要安装 requests</p>
-<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests</span>
+<p>上面的代码 ...list，将 list 分解开，插入到了 list2 中，执行完代码后。</p>
+<p>list2 的值为 [0,1,2,3]。</p>
+<h2>null-aware spread operator (...?)</h2>
+<p>还是不知道咋翻译这个操作符。</p>
+<p>Dart 2.3 新增 ...? 操作符。</p>
+<p>如果 list 是 null，我们可以使用 ...? 来拆分 list。如下代码：</p>
+<div class="highlight"><pre><span></span><span class="err">var list;</span>
+<span class="err">var list2 = [0, ...?list];</span>
+<span class="err">assert(list2.length == 1);</span>
 </pre></div>
 
 
-<h2>设为默认</h2>
-<p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
-<div class="highlight"><pre><span></span><span class="err">pip install pip -U</span>
-<span class="err">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span>
+<p>上面的例子中，...? 在判断 list 为 null 后，不会造成异常。</p>
+<h2>列表中使用 if</h2>
+<p>Dart 2.3 新增功能。</p>
+<p>看例子：</p>
+<div class="highlight"><pre><span></span><span class="err">var nav = [</span>
+<span class="err">&#39;Home&#39;,</span>
+<span class="err">&#39;Furniture&#39;,</span>
+<span class="err">&#39;Plants&#39;,</span>
+<span class="err">if (promoActive) &#39;Outlet&#39;</span>
+<span class="err">];</span>
 </pre></div>
 
 
-<p>如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：</p>
-<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U</span>
+<p>如果 promeActive 的值是 true，<strong>则把 'Outlet' 插入到 nav 中。</strong></p>
+<p>如果 promeActive 的值是 false，则不执行操作。</p>
+<h2>列表中使用 for</h2>
+<p>Dart 2.3 新增功能。</p>
+<div class="highlight"><pre><span></span><span class="err">var listOfInts = [1, 2, 3];</span>
+<span class="err">var listOfStrings = [</span>
+<span class="err">&#39;#0&#39;,</span>
+<span class="err">for (var i in listOfInts) &#39;#$i&#39;</span>
+<span class="err">];</span>
 </pre></div>
 
 
-<h2>参考资料</h2>
+<p>上面的例子，将 listOfInts 的值，都插入到了 listOfStrings 中。</p>
+<p>'#$i'　这个代表将 i 的值转换成为 String</p>
+<p>我们如果使用 ... ,则没有办法对列表中的元素执行转换.</p>
+<h2>参考</h2>
 <ol>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">清华大学开源软件镜像站</a></li>
+<li><a href="https://dart.dev/guides/language/language-tour#spread-operator">Dart tour</a></li>
 </ol>
   </div>
 </div>

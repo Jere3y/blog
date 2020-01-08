@@ -33,6 +33,7 @@
 <nav>
   <h4>文章分类</h4>
   <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/category/dart.html">Dart</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/web.html">Web</a></li>
@@ -40,13 +41,54 @@
 </nav>
 
 <nav>
-  <!-- <h4>链接</h4>
+  <h4>链接</h4>
   <ul  class="nav flex-column">
-  </ul> -->
+    <!-- <li class="nav-item"><a class="nav-link" href="/skill.html">标签</a></li> -->
+  </ul>
 </nav>
 <!-- end includes/sidebar.html --></div>
       <div class="col-sm-8">
         <section id="page-main" role="main">
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
+      <a href="/dart-list-lie-biao-de-yu-fa-tang.html" title="«Dart List 列表的语法糖»">
+        Dart List 列表的语法糖
+      </a>
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-01-08 19:53:41</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/dart.html">Dart</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/dartyu-fa-tang.html">Dart语法糖</a>,   <a href="/tag/dartlie-biao-cao-zuo.html">Dart列表操作</a></p>    </div>
+  </div>
+  <div class="card-body">
+    <h2>spread operator (...)</h2>
+<p>不知道咋翻译这个操作符。</p>
+<p>Dart 2.3 新增 ... 操作符。</p>
+<p>使用 ... 可以简单方便的把一个列表的所有元素插入到另一个列表中。</p>
+<div class="highlight"><pre><span></span><span class="err">var list = [1, 2, 3];</span>
+<span class="err">var list2 = [0, ...list];</span>
+<span class="err">assert(list2.length == 4);</span>
+</pre></div>
+
+
+<p>上面的代码 ...list，将 list 分解开，插入到了 list2 中，执行完代码后。</p>
+<p>list2 的值为 [0,1,2,3]。</p>
+<h2>null-aware spread operator (...?)</h2>
+<p>还是不知道咋翻译这个操作符。</p>
+<p>Dart 2.3 新增 ...? 操作符。</p>
+<p>如果 list 是 …</p>
+  </div>
+  <div class="card-footer text-right">
+    <a class="card-link" href="/dart-list-lie-biao-de-yu-fa-tang.html">查看全文</a>
+  </div>
+</div>
+<div style="height: 2em;"></div>
 <div class="card">
   <div class="card-header">
     <h1 class="card-title">

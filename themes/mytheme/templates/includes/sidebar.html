@@ -31,8 +31,9 @@
 {% endif %}
 
 <nav>
-  <!-- <h4>链接</h4>
+  <h4>链接</h4>
   <ul  class="nav flex-column">
+    <!-- <li class="nav-item"><a class="nav-link" href="{{ SITEURL }}/skill.html">标签</a></li> -->
     {% if FEED_ATOM %}
     <li class="nav-item"><a class="nav-link" href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}">Flux ATOM</a></li>
     {% endif %}
@@ -49,6 +50,6 @@
     <li class="nav-item"><a class="nav-link" href="{{ url }}">{{ name }}</a></li>
     {% endfor %}
     {% endif %}
-  </ul> -->
+  </ul>
 </nav>
 <!-- end includes/sidebar.html -->
