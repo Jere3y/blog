@@ -52,6 +52,91 @@
 <div class="card">
   <div class="card-header">
     <h1 class="card-title">
+      <a href="/nginx-ti-gong-de-san-chong-fu-zai-jun-heng-fang-fa.html" title="«Nginx 提供的三种负载均衡方法»">
+        Nginx 提供的三种负载均衡方法
+      </a>
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-01-10 23:23:00</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/web.html">Web</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/nginx.html">Nginx</a>,   <a href="/tag/fu-zai-jun-heng.html">负载均衡</a>,   <a href="/tag/fu-zai-jun-heng-fang-fa.html">负载均衡方法</a></p>    </div>
+  </div>
+  <div class="card-body">
+    <h2>负载均衡（Load balancing）</h2>
+<p>负载均衡可以把多个服务器组合在一起，优化资源利用率，最大化吞吐量，减少延迟并确保容错。</p>
+<p>Nginx 是一种常用的 HTTP 负载均衡服务。</p>
+<h2>Nginx 提供的负载均衡机制（或者叫方法）</h2>
+<p>Nginx 提供了 3 中负载均衡机制。</p>
+<ul>
+<li>轮询机制。类似平时我们分东西，你一个，我一个。Nginx 分发请求到每个服务器。</li>
+<li>最少连接机制。Nginx 将下一个请求分配给活动连接数最少的服务器。</li>
+<li>ip-hash 机制。Nginx 根据 ip-hash 算法，分配最终执行每个请求的服务器。下面章节会有详细说明。</li>
+</ul>
+<h3>轮询机制-按照权重轮询</h3>
+<p>最简单的负载均衡配置如下：</p>
+<div class="highlight"><pre><span></span><span class="nt">http</span> <span class="p">{</span>
+    <span class="err">upstream</span> <span class="err">myapp1</span> <span class="err">{</span>
+        <span class="err">server</span> <span class="err">srv1.example.com</span><span class="p">;</span>
+        <span class="err">server</span> <span class="err">srv2.example.com</span><span class="p">;</span>
+        <span class="err">server</span> <span class="err">srv3 …</span></pre></div>
+  </div>
+  <div class="card-footer text-right">
+    <a class="card-link" href="/nginx-ti-gong-de-san-chong-fu-zai-jun-heng-fang-fa.html">查看全文</a>
+  </div>
+</div>
+<div style="height: 2em;"></div>
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
+      <a href="/gao-bing-fa-miao-sha-xi-tong-she-ji.html" title="«高并发秒杀系统设计»">
+        高并发秒杀系统设计
+      </a>
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-01-09 23:10:01</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/qi-ta.html">其他</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/gao-bing-fa.html">高并发</a>,   <a href="/tag/c10k.html">c10k</a>,   <a href="/tag/miao-sha-xi-tong.html">秒杀系统</a></p>    </div>
+  </div>
+  <div class="card-body">
+    <h2>从抢开始</h2>
+<p>我们假设，一个商品的秒杀活动会吸引一万人来参加，处理这个秒杀活动的难点在于：</p>
+<ol>
+<li>瞬发的高并发访问，10K 级别。</li>
+<li>用户秒杀成功（下订单），付款成功，秒杀商品的<strong>库存在所有并发中同步</strong>，如果不同步，会发生超卖或者少卖现象。</li>
+</ol>
+<p>下面我们来讨论以上的问题。</p>
+<h2>负载均衡，分而治之</h2>
+<p>面对高并发的访问，一个业务服务器的处理能力可能不够，有时会造成没有相应等不好体验。</p>
+<p>使用负载均衡技术，可以将请求分给多个业务服务器。</p>
+<p><img alt="图片" src="./images/并发请求+10K.png"></p>
+<p>如上图，负载均衡服务器将发送过来的请求，分给多个业务服务器来处理。每个服务器处理自己力所能及的请求。解决单个业务服务器面对大并发请求的压力。</p>
+<p>Nginx 提供了几种负载均衡的方法。具体内容请看文章<a href="">Nginx 提供的三种负载均衡方法</a>。</p>
+<h2>库存数据的高并发读写</h2>
+<h2>参考</h2>
+<ol>
+<li><a href="https://tour.golang.org/concurrency/1">Golang concurrency</a></li>
+<li><a href="">Redis</a></li>
+<li><a href="https://nginx.org/en/docs/http/load_balancing.html">Using nginx as HTTP load balancer</a></li>
+</ol>
+  </div>
+  <div class="card-footer text-right">
+    <a class="card-link" href="/gao-bing-fa-miao-sha-xi-tong-she-ji.html">查看全文</a>
+  </div>
+</div>
+<div style="height: 2em;"></div>
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
       <a href="/dart-list-lie-biao-de-yu-fa-tang.html" title="«Dart List 列表的语法糖»">
         Dart List 列表的语法糖
       </a>

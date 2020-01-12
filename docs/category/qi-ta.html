@@ -52,6 +52,50 @@
 <div class="card">
   <div class="card-header">
     <h1 class="card-title">
+      <a href="/gao-bing-fa-miao-sha-xi-tong-she-ji.html" title="«高并发秒杀系统设计»">
+        高并发秒杀系统设计
+      </a>
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-01-09 23:10:01</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/qi-ta.html">其他</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/gao-bing-fa.html">高并发</a>,   <a href="/tag/c10k.html">c10k</a>,   <a href="/tag/miao-sha-xi-tong.html">秒杀系统</a></p>    </div>
+  </div>
+  <div class="card-body">
+    <h2>从抢开始</h2>
+<p>我们假设，一个商品的秒杀活动会吸引一万人来参加，处理这个秒杀活动的难点在于：</p>
+<ol>
+<li>瞬发的高并发访问，10K 级别。</li>
+<li>用户秒杀成功（下订单），付款成功，秒杀商品的<strong>库存在所有并发中同步</strong>，如果不同步，会发生超卖或者少卖现象。</li>
+</ol>
+<p>下面我们来讨论以上的问题。</p>
+<h2>负载均衡，分而治之</h2>
+<p>面对高并发的访问，一个业务服务器的处理能力可能不够，有时会造成没有相应等不好体验。</p>
+<p>使用负载均衡技术，可以将请求分给多个业务服务器。</p>
+<p><img alt="图片" src="./images/并发请求+10K.png"></p>
+<p>如上图，负载均衡服务器将发送过来的请求，分给多个业务服务器来处理。每个服务器处理自己力所能及的请求。解决单个业务服务器面对大并发请求的压力。</p>
+<p>Nginx 提供了几种负载均衡的方法。具体内容请看文章<a href="">Nginx 提供的三种负载均衡方法</a>。</p>
+<h2>库存数据的高并发读写</h2>
+<h2>参考</h2>
+<ol>
+<li><a href="https://tour.golang.org/concurrency/1">Golang concurrency</a></li>
+<li><a href="">Redis</a></li>
+<li><a href="https://nginx.org/en/docs/http/load_balancing.html">Using nginx as HTTP load balancer</a></li>
+</ol>
+  </div>
+  <div class="card-footer text-right">
+    <a class="card-link" href="/gao-bing-fa-miao-sha-xi-tong-she-ji.html">查看全文</a>
+  </div>
+</div>
+<div style="height: 2em;"></div>
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title">
       <a href="/liao-jie-qian-ming-he-jia-mi.html" title="«了解签名和加密»">
         了解签名和加密
       </a>
