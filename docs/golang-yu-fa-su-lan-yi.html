@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Golang 语法速览（一） — 无涯日记</title>
+  <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<meta name="author" content="天宇" />
+<meta name="keywords" content="Golang 语法" />
+<link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  $(function (e) {
+    $("table").attr("class", "table table-bordered small");
+    $("blockquote").attr("class", "blockquote small");
+    $('pre').each(function (i, block) {
+      hljs.highlightBlock(block);
+    });
+    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#'>" + '目录' + "</a>");
+    $("#content").children().each(function (index, element) {
+      var tagName = $(this).get(0).tagName;
+      if (tagName.substr(0, 1).toUpperCase() == "H") {
+        var contentH = $(this).html();//获取内容
+        var markid = "mark-" + tagName + "-" + index.toString();
+        $(this).attr("id", markid);//为当前h标签设置id
+        let spaceSize = parseInt(tagName.substr(1, 2)) - 2;
+        $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:" + spaceSize + "em;font-size:14px;' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
+      }
+    });
+  });
+</script>
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h1>无涯日记</h1>
+    <p>生有涯，学无涯！</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2"><!-- begin includes/sidebar.html -->
+<nav>
+  <h4>页面</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/index.html">首页</a></li>
+    <li class="nav-item"><a class="nav-link" href="/categories.html">文章分类</a></li>
+    <li class="nav-item"><a class="nav-link" href="/archives.html">归档</a></li>
+    <li class="nav-item"><a class="nav-link" href="/tags.html">标签</a></li>
+  </ul>
+</nav>
+
+<nav>
+  <h4>文章分类</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/category/dart.html">Dart</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/golang.html">Golang</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/web.html">Web</a></li>
+  </ul>
+</nav>
+
+<nav>
+  <h4>链接</h4>
+  <ul  class="nav flex-column">
+    <!-- <li class="nav-item"><a class="nav-link" href="/skill.html">标签</a></li> -->
+  </ul>
+</nav>
+<!-- end includes/sidebar.html --></div>
+      <div class="col-sm-8">
+        <article class="post" id="page-main" role="main">
+<div style="margin-bottom: 2em;">
+  <div>
+    <h1 id="title">
+        Golang 语法速览（一）
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-02-14 17:04:41</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/golang.html">Golang</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/golang-yu-fa.html">Golang 语法</a></p>    </div>
+  </div>
+  <div id="content">
+    <h2>语句</h2>
+<p>Go 的语句使用换行分割。语句末尾不需要任何符号。</p>
+<h2>常量</h2>
+<p>使用 const 关键字声明常量：</p>
+<div class="highlight"><pre><span></span><span class="err">const a = &quot;hello&quot;</span>
+</pre></div>
+
+
+<h2>变量</h2>
+<p>Go 的变量遵循，<strong>先声明，后使用</strong>。未声明的变量直接使用，编译器会报出错误。</p>
+<p>这样的设计方式，可以在编写代码的时候，由编译器执行检查，防止程序员误使用了没有声明的变量。造成莫名其妙的简单错误。</p>
+<h3>声明变量</h3>
+<p>Go 使用以下语法声明变量：</p>
+<div class="highlight"><pre><span></span><span class="err">var name type</span>
+</pre></div>
+
+
+<p>其中，var 代表 name 是变量，type 是变量类型，可以是内置的基本变量类型，也可以是我们自己定义的变量类型。我们可以这样用：</p>
+<div class="highlight"><pre><span></span><span class="err">var a bool</span>
+</pre></div>
+
+
+<p>表示我们声明了一个变量 <strong>a</strong>，他的类型是 <strong>bool</strong>。</p>
+<p>声明一个变量的同时，Go 会给变量一个默认值，数字类型是 0，bool 是 false，字符串是 ""。</p>
+<h3>同时声明多个变量</h3>
+<p>我们也可以在一行中同时声明多个变量，使用 , 分割：</p>
+<div class="highlight"><pre><span></span><span class="err">var a,b,c,d bool</span>
+</pre></div>
+
+
+<p>声明变量 a,b,c,d 都是 bool 类型</p>
+<h3>多个变量赋值</h3>
+<div class="highlight"><pre><span></span><span class="err">var a,b,c,d bool = true, false, true, false</span>
+</pre></div>
+
+
+<h3>变量赋值</h3>
+<p>声明变量之后，可以对变量赋值。比如上面我们声明一个 bool 类型 a 变量。我们可以使用：</p>
+<div class="highlight"><pre><span></span><span class="err">a = true</span>
+</pre></div>
+
+
+<p>把 a 的值设置为 <strong>true</strong>。</p>
+<h3>声明同时赋值</h3>
+<p>也可以在声明的同时，给变量赋值，甚至可以给多个变量赋值：</p>
+<div class="highlight"><pre><span></span><span class="err">a := true</span>
+<span class="err">b, c = true, &quot;str&quot;</span>
+</pre></div>
+
+
+<p>这样的用法，可以不用指定变量的类型，Go 编译器会自动检测。</p>
+<p>注意，<strong>:= 操作符只能在函数中使用。</strong></p>
+<p>我们可以<strong>在函数</strong>中使用了 := 操作符，完成了声明同时赋值的过程，上面的语句等于：</p>
+<div class="highlight"><pre><span></span><span class="err">var a = true</span>
+<span class="err">var b, c = true, &quot;str&quot;</span>
+</pre></div>
+
+
+<p>我们在声明变量的同时，可以直接给变量赋值，这是不需要指明变量的类型，Go 会自己推测。也可以同时给多个变量赋值，多个变量赋值时，甚至多个变量可以不是同一个类型的。</p>
+<blockquote>
+<p>:= 在 Go 中，<strong>只能在函数中使用</strong>，是声明同时赋值的意思，而在 Python3.8 新特性中，:= 主要是避免表达式多次执行。</p>
+</blockquote>
+<h2>变量类型</h2>
+<h3>内置类型</h3>
+<p>Go 由几个基本类型：</p>
+<div class="highlight"><pre><span></span><span class="n">bool</span>
+<span class="n">string</span>
+<span class="nb">int</span>  <span class="nb">int8</span>  <span class="n">int16</span>  <span class="n">int32</span>  <span class="n">int64</span>
+<span class="n">uint</span> <span class="n">uint8</span> <span class="n">uint16</span> <span class="n">uint32</span> <span class="n">uint64</span> <span class="n">uintptr</span>
+<span class="n">byte</span> <span class="o">//</span> <span class="err">其实就是</span> <span class="n">uint8</span>
+<span class="n">rune</span> <span class="o">//</span> <span class="err">其实就是</span> <span class="n">int32</span>
+<span class="n">float32</span> <span class="n">float64</span>
+
+<span class="n">complex64</span> <span class="n">complex128</span>
+</pre></div>
+
+
+<p>计算机存储数据使用的是 01，每个每个 0 或者 1 代表一个 bit。</p>
+<p>通常情况下 int 和 unit 类型在 32 bit 系统是 32 bit 的，在 64 bit 系统是 64 bit 的。</p>
+<p>我们平常使用的人类可读的字符串，是根据“编码”（比如 utf-8）将内容编码，存储起来。</p>
+<h3>类型转换</h3>
+<p>Go 使用语法 T(v) 来转换类型：</p>
+<div class="highlight"><pre><span></span><span class="err">var i int = 42</span>
+<span class="err">var f float64 = float64(i)</span>
+<span class="err">var u uint = uint(f)</span>
+</pre></div>
+
+
+<h2>函数</h2>
+<h3>入口函数</h3>
+<p>下面就 Go 的入口函数：</p>
+<div class="highlight"><pre><span></span><span class="err">func main() {</span>
+<span class="err">    fmt.Println(&quot;Welcome!&quot;)</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Go 使用 func 声明一个函数。一个函数<strong>可以有也可以没有参数</strong>。</p>
+<h3>函数语法</h3>
+<p><strong>参数类型</strong>：我们在参数明后面标识出参数的类型。</p>
+<p><strong>返回值类型</strong>：在函数后面标志函数返回值类型。</p>
+<p>像下面这个函数，拥有两个 int 类型的参数，返回值也是 int：</p>
+<div class="highlight"><pre><span></span><span class="err">func add(a int, b int) int {</span>
+<span class="err">    return a + b</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>同样的，我们可以用声明变量类型的语法来声明函数参数：</p>
+<div class="highlight"><pre><span></span><span class="err">func add(a, b int) int {</span>
+<span class="err">    return a + b</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h3>函数调用</h3>
+<p>我们调用上面的 add 这样做：</p>
+<div class="highlight"><pre><span></span><span class="err">add(1, 2)</span>
+</pre></div>
+
+
+<p>1, 2会根据位置，赋值给a, b。</p>
+<h3>函数的多返回值</h3>
+<p>Go 的函数可以返回多个值，比如，我们要交换 a, b 的值，传统的做法要声明一个中间缓存变量，来交换 a 和 b 的值。</p>
+<p>我们也可以使用函数，来实现这个功能。</p>
+<div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="n">string</span><span class="p">)</span> <span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span> <span class="err">{</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<span class="err">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span><span class="o">=</span> <span class="n">swap</span><span class="p">(</span><span class="ss">&quot;hello&quot;</span><span class="p">,</span> <span class="ss">&quot;world&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>上面 a 和 b 会交换赋值给 b 和 a。</p>
+<h3>命名的返回值</h3>
+<p>我们修改下上面的交换位置的函数，实现同样的结果：</p>
+<div class="highlight"><pre><span></span><span class="n">func</span> <span class="n">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="n">string</span><span class="p">)</span> <span class="p">(</span><span class="n">a</span> <span class="n">string</span><span class="p">,</span> <span class="n">b</span> <span class="n">string</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span>
+<span class="err">}</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="err">{</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">:</span><span class="o">=</span> <span class="n">swap</span><span class="p">(</span><span class="ss">&quot;hello&quot;</span><span class="p">,</span> <span class="ss">&quot;world&quot;</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>声明返回值类型的时候，可以直接指定返回值的名字。</p>
+<p>在函数返回的时候，直接使用 <strong>return</strong> Go 会自动检测返回值，并且按照相应的位置返回。</p>
+<h2>参考</h2>
+<ol>
+<li><a href="https://dart.dev/guides/language/language-tour#spread-operator">Dart tour</a></li>
+</ol>
+  </div>
+</div>
+
+
+
+
+        </article>
+      </div>
+      <div class="col-sm-2">
+        <div class="list-group sticky-top" id="mulu" style="margin-bottom: 2em;margin-top:2em">
+          <!-- 这个是目录 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
+        <script type="text/javascript">
+          (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+          })(document, 'script');
+        </script>
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+  </div>
+</div>
+
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <div class="mx-auto">
+      <footer id="page-foot">
+        <script
+          type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;">
+          ©2016-2019 wuyariji.com 无涯日记，所有文章遵循 WTFPL </p>
+      </footer>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

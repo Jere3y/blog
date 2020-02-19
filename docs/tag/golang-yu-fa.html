@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>无涯日记 — Articles avec le mot clé « 国内源 »</title>
+  <title>无涯日记 — Articles avec le mot clé « Golang 语法 »</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -53,38 +53,48 @@
 <div class="card">
   <div class="card-header">
     <h1 class="card-title">
-      <a href="/pypi-qie-huan-guo-nei-yuan.html" title="«PYPI 切换国内源»">
-        PYPI 切换国内源
+      <a href="/golang-yu-fa-su-lan-yi.html" title="«Golang 语法速览（一）»">
+        Golang 语法速览（一）
       </a>
     </h1>
     <div class="meta">
 <!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-11-20 23:59:00</p>
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-02-14 17:04:41</p>
 <p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/qi-ta.html">其他</a>
+  分类：<a href="/category/golang.html">Golang</a>
 </p>
 <p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/xin.html">xin</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/guo-nei-yuan.html">国内源</a></p>    </div>
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/golang-yu-fa.html">Golang 语法</a></p>    </div>
   </div>
   <div class="card-body">
-    <h2>临时使用</h2>
-<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package</span>
+    <h2>语句</h2>
+<p>Go 的语句使用换行分割。语句末尾不需要任何符号。</p>
+<h2>常量</h2>
+<p>使用 const 关键字声明常量：</p>
+<div class="highlight"><pre><span></span><span class="err">const a = &quot;hello&quot;</span>
 </pre></div>
 
 
-<p>some-package 是想要安装的包的名字。例如，想要安装 requests</p>
-<div class="highlight"><pre><span></span><span class="err">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests</span>
+<h2>变量</h2>
+<p>Go 的变量遵循，<strong>先声明，后使用</strong>。未声明的变量直接使用，编译器会报出错误。</p>
+<p>这样的设计方式，可以在编写代码的时候，由编译器执行检查，防止程序员误使用了没有声明的变量。造成莫名其妙的简单错误。</p>
+<h3>声明变量</h3>
+<p>Go 使用以下语法声明变量：</p>
+<div class="highlight"><pre><span></span><span class="err">var name type</span>
 </pre></div>
 
 
-<h2>设为默认</h2>
-<p>升级 pip 到最新的版本 (&gt;=10.0.0) 后进行配置：</p>
-<div class="highlight"><pre><span></span><span class="err">pip install pip -U</span>
-<span class="err">pip config set global.index-url https://pypi.tuna.tsinghua.edu …</span></pre></div>
+<p>其中，var 代表 name 是变量，type 是变量类型，可以是内置的基本变量类型，也可以是我们自己定义的变量类型。我们可以这样用：</p>
+<div class="highlight"><pre><span></span><span class="err">var a bool</span>
+</pre></div>
+
+
+<p>表示我们声明了一个变量 <strong>a</strong>，他的类型是 <strong>bool</strong>。</p>
+<p>声明一个变量的同时，Go 会给变量一个默认值，数字类型是 …</p>
   </div>
   <div class="card-footer text-right">
-    <a class="card-link" href="/pypi-qie-huan-guo-nei-yuan.html">查看全文</a>
+    <a class="card-link" href="/golang-yu-fa-su-lan-yi.html">查看全文</a>
   </div>
 </div>
 <div style="height: 2em;"></div>
