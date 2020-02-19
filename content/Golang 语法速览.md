@@ -58,7 +58,7 @@ Go 使用以下语法声明变量：
 也可以在声明的同时，给变量赋值，甚至可以给多个变量赋值：
 
     a := true
-    b, c = true, "str"
+    b, c := true, "str"
 
 这样的用法，可以不用指定变量的类型，Go 编译器会自动检测。
 
@@ -178,9 +178,3 @@ Go 的函数可以返回多个值，比如，我们要交换 a, b 的值，传�
 声明返回值类型的时候，可以直接指定返回值的名字。
 
 在函数返回的时候，直接使用 **return** Go 会自动检测返回值，并且按照相应的位置返回。
-
-
-## 参考
-
-1. [Dart tour](https://dart.dev/guides/language/language-tour#spread-operator)
-
