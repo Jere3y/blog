@@ -3,13 +3,39 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>无涯日记 — Articles avec le mot clé « Golang 语法 »</title>
+  <title>Golang 语法速览（二） — 无涯日记</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<meta name="author" content="天宇" />
+<meta name="keywords" content="Golang 语法" />
+<link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  $(function (e) {
+    $("table").attr("class", "table table-bordered small");
+    $("blockquote").attr("class", "blockquote small");
+    $('pre').each(function (i, block) {
+      hljs.highlightBlock(block);
+    });
+    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#'>" + '目录' + "</a>");
+    $("#content").children().each(function (index, element) {
+      var tagName = $(this).get(0).tagName;
+      if (tagName.substr(0, 1).toUpperCase() == "H") {
+        var contentH = $(this).html();//获取内容
+        var markid = "mark-" + tagName + "-" + index.toString();
+        $(this).attr("id", markid);//为当前h标签设置id
+        let spaceSize = parseInt(tagName.substr(1, 2)) - 2;
+        $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:" + spaceSize + "em;font-size:14px;' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
+      }
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -34,7 +60,7 @@
   <h4>文章分类</h4>
   <ul class="nav flex-column">
     <li class="nav-item"><a class="nav-link" href="/category/dart.html">Dart</a></li>
-    <li class="nav-item"><a class="nav-link" href="/category/golang.html">Golang</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/golang.html">Golang</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/web.html">Web</a></li>
@@ -49,13 +75,11 @@
 </nav>
 <!-- end includes/sidebar.html --></div>
       <div class="col-sm-8">
-        <section id="page-main" role="main">
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">
-      <a href="/golang-yu-fa-su-lan-er.html" title="«Golang 语法速览（二）»">
+        <article class="post" id="page-main" role="main">
+<div style="margin-bottom: 2em;">
+  <div>
+    <h1 id="title">
         Golang 语法速览（二）
-      </a>
     </h1>
     <div class="meta">
 <!-- includes/article_meta.html -->
@@ -67,68 +91,15 @@
     href="/author/tian-yu.html">天宇</a></p>
 <p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/golang-yu-fa.html">Golang 语法</a></p>    </div>
   </div>
-  <div class="card-body">
+  <div id="content">
     <h2>指针</h2>
   </div>
-  <div class="card-footer text-right">
-    <a class="card-link" href="/golang-yu-fa-su-lan-er.html">查看全文</a>
-  </div>
 </div>
-<div style="height: 2em;"></div>
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">
-      <a href="/golang-yu-fa-su-lan-yi.html" title="«Golang 语法速览（一）»">
-        Golang 语法速览（一）
-      </a>
-    </h1>
-    <div class="meta">
-<!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-02-14 17:04:41</p>
-<p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/golang.html">Golang</a>
-</p>
-<p class="small text-muted" style="margin-bottom: 0">作者：<a
-    href="/author/tian-yu.html">天宇</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/golang-yu-fa.html">Golang 语法</a></p>    </div>
-  </div>
-  <div class="card-body">
-    <h2>语句</h2>
-<p>Go 的语句使用换行分割。语句末尾不需要任何符号。</p>
-<h2>常量</h2>
-<p>使用 const 关键字声明常量：</p>
-<div class="highlight"><pre><span></span><span class="err">const a = &quot;hello&quot;</span>
-</pre></div>
 
 
-<h2>变量</h2>
-<p>Go 的变量遵循，<strong>先声明，后使用</strong>。未声明的变量直接使用，编译器会报出错误。</p>
-<p>这样的设计方式，可以在编写代码的时候，由编译器执行检查，防止程序员误使用了没有声明的变量。造成莫名其妙的简单错误。</p>
-<h3>声明变量</h3>
-<p>Go 使用以下语法声明变量：</p>
-<div class="highlight"><pre><span></span><span class="err">var name type</span>
-</pre></div>
 
 
-<p>其中，var 代表 name 是变量，type 是变量类型，可以是内置的基本变量类型，也可以是我们自己定义的变量类型。我们可以这样用：</p>
-<div class="highlight"><pre><span></span><span class="err">var a bool</span>
-</pre></div>
-
-
-<p>表示我们声明了一个变量 <strong>a</strong>，他的类型是 <strong>bool</strong>。</p>
-<p>声明一个变量的同时，Go 会给变量一个默认值，数字类型是 …</p>
-  </div>
-  <div class="card-footer text-right">
-    <a class="card-link" href="/golang-yu-fa-su-lan-yi.html">查看全文</a>
-  </div>
-</div>
-<div style="height: 2em;"></div>
-<nav id="pagination">  <!-- <span id="first_page" class="a inactive">&#60;&#60;</span>
-        <span id="first_page" class="a inactive">&#60;</span> -->
-  <span class="a active">1</span>
-  <!-- <span id="next_page" class="a inactive">&#62;</span>
-        <span id="next_page" class="a inactive">&#62;&#62;</span> -->
-</nav>        </section>
+        </article>
       </div>
       <div class="col-sm-2">
         <div class="list-group sticky-top" id="mulu" style="margin-bottom: 2em;margin-top:2em">
@@ -138,6 +109,36 @@
     </div>
   </div>
 
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
+        <script type="text/javascript">
+          (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+          })(document, 'script');
+        </script>
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+  </div>
+</div>
 
   <div class="jumbotron text-center" style="margin-bottom:0">
     <div class="mx-auto">

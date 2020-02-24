@@ -105,7 +105,6 @@ Go 使用语法 T(v) 来转换类型：
 
 ## 函数
 
-
 ### 入口函数
 
 下面就 Go 的入口函数：
@@ -162,6 +161,8 @@ Go 的函数可以返回多个值，比如，我们要交换 a, b 的值，传�
 
 ### 命名的返回值
 
+不但函数参数可以命名，返回值也可以命名。
+
 我们修改下上面的交换位置的函数，实现同样的结果：
 
     func swap(x, y string) (a string, b string) {
@@ -178,3 +179,109 @@ Go 的函数可以返回多个值，比如，我们要交换 a, b 的值，传�
 声明返回值类型的时候，可以直接指定返回值的名字。
 
 在函数返回的时候，直接使用 **return** Go 会自动检测返回值，并且按照相应的位置返回。
+
+## 流程控制
+
+### 循环
+
+Go 和其他语言一样，支持 for 循环。基本的 for 语法如下：
+
+    sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+
+注意，Go 和 Java、C、Dart、JavaScript 不一样的地方在于，for 后面是美没有圆括号()的，但是 Go 后面的大括号{}是一定要有的。
+
+我们还可以这样用：
+
+    sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+
+注意上面的 for 只给出了一个循环条件。这样的情况下，for 和 C 的 while 有相同的功能。我们也可以这样用：
+
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+
+我们直接省略了两个分号 ;**在 Go 中 for 就是 C 的 while。**
+
+#### 无限循环
+
+    for{
+
+    }
+
+不带任何条件的 for 就是无限循环。
+
+### 条件-if
+
+Go 中的 if 和 for 一样，不需要用圆括号括起来。
+
+    if x < 0 {
+		x++
+	}else{
+        x--
+    }
+
+if 也可以向 for 一样，提供一个初始化的变量。
+
+    if x := 1; x > 0{
+        
+    }else{
+
+    }
+
+上面的 x 只在 if...else...中可以访问。
+
+### 条件-switch
+
+Go 中的 switch 不像其他 C 系语言。不需要 break。Go 会在语句后自动加上 break
+
+    package main
+
+    import (
+        "fmt"
+        "runtime"
+    )
+
+    func main() {
+        fmt.Print("Go runs on ")
+        switch os := runtime.GOOS; os {
+        case "darwin":
+            fmt.Println("OS X.")
+        case "linux":
+            fmt.Println("Linux.")
+        default:
+            // freebsd, openbsd,
+            // plan9, windows...
+            fmt.Printf("%s.\n", os)
+        }
+    }
+
+### defer
+
+Go 提供一个新东西。defer 表示后面的语言在方法最后（返回之前）执行。
+
+> 终于不用写出无数个 file.close()
+
+defer 像一个栈“先进后出”。如果一个函数中有多个 defer，那么会先执行最后一条。
+
+    package main
+
+    import "fmt"
+
+    func main() {
+        fmt.Println("counting")
+
+        for i := 0; i < 3; i++ {
+            defer fmt.Println(i)
+        }
+
+        fmt.Println("done")
+    }
+
+上面的函数会输出 3，2，1
