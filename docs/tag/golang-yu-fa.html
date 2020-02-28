@@ -68,7 +68,24 @@
 <p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/golang-yu-fa.html">Golang 语法</a></p>    </div>
   </div>
   <div class="card-body">
-    <h2>指针</h2>
+    <h2>数组</h2>
+<p>数组是最基本的数据结构。在 Go 中：</p>
+<div class="highlight"><pre><span></span><span class="err">var a [10]int</span>
+</pre></div>
+
+
+<p>表示变量 a 是长度为 10 的 int 数组。</p>
+<p>声明数据的时候必须要指定数组的长度，长度一旦确定，就不能改变。如果不指定长度，[]T 这声明的是“<strong>切片</strong>”。</p>
+<h3>切片</h3>
+<p>切片是数组的一部分，大部分现代语言都提供切片。</p>
+<p>Go 的切片语法是 [1:2]</p>
+<p>用方括号 [:] 中间使用 : 分割，前后数字分别表示开始（包括）和结束（不包括）的索引。</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="nb">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2 …</span></pre></div>
   </div>
   <div class="card-footer text-right">
     <a class="card-link" href="/golang-yu-fa-su-lan-er.html">查看全文</a>

@@ -92,7 +92,110 @@
 <p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/golang-yu-fa.html">Golang 语法</a></p>    </div>
   </div>
   <div id="content">
-    <h2>指针</h2>
+    <h2>数组</h2>
+<p>数组是最基本的数据结构。在 Go 中：</p>
+<div class="highlight"><pre><span></span><span class="err">var a [10]int</span>
+</pre></div>
+
+
+<p>表示变量 a 是长度为 10 的 int 数组。</p>
+<p>声明数据的时候必须要指定数组的长度，长度一旦确定，就不能改变。如果不指定长度，[]T 这声明的是“<strong>切片</strong>”。</p>
+<h3>切片</h3>
+<p>切片是数组的一部分，大部分现代语言都提供切片。</p>
+<p>Go 的切片语法是 [1:2]</p>
+<p>用方括号 [:] 中间使用 : 分割，前后数字分别表示开始（包括）和结束（不包括）的索引。</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="nb">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+    <span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:]</span>
+    <span class="n">var</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>输出结果为：</p>
+<div class="highlight"><pre><span></span><span class="k">[1 2 3]</span>
+<span class="k">[1 2 3]</span>
+<span class="k">[2]</span>
+</pre></div>
+
+
+<dl>
+<dd>冒号前面的值，默认是 0，后面的值默认是数组的最大长度。</dd>
+</dl>
+<h3>切片就是数组的引用</h3>
+<p>产生切片没有复制一份新的数据，而是保存了数组的引用。</p>
+<p>更改切片的值，同时会更改数组的值。</p>
+<h2>指针</h2>
+<p>Go 提供了指针.指针就是存储变量的地址。</p>
+<div class="highlight"><pre><span></span><span class="err">var p *int</span>
+</pre></div>
+
+
+<p>声明 p 是一个指向 int 类型的指针。</p>
+<p>我们可以这样对 p 进行赋值。</p>
+<div class="highlight"><pre><span></span><span class="err">i := 42</span>
+<span class="err">p = &amp;i</span>
+</pre></div>
+
+
+<p>其中符号 &amp; 表示提取变量 i 的地址。p 就是指向变量 i 的指针。我们可以通过 p 改变 i 的值。</p>
+<div class="highlight"><pre><span></span><span class="err">*p = 14</span>
+</pre></div>
+
+
+<p>设置后的 i 的值为 14。</p>
+<h2>结构体（Structs）</h2>
+<p>结构体是延用了 C++ 的翻译，如果有不恰当，就直接使用英文。</p>
+<p>像 C++ 一样，Go 提供 Structs。</p>
+<p>Go 的设计思想，和 Java 这种面向对象语言不同的就是，将类的 field 和方法分开。</p>
+<p>Structs 就可以看作类的 field。我们这样定义一个 field：</p>
+<div class="highlight"><pre><span></span><span class="err">type Person struct {</span>
+<span class="err">    age int</span>
+<span class="err">    sex int</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h3>构造器</h3>
+<p>Go 会默认提供一个“构造器”来创建结构体。</p>
+<div class="highlight"><pre><span></span><span class="err">Person{12,1}</span>
+<span class="err">Person{age:12}</span>
+<span class="err">Person{sex:1}</span>
+<span class="err">Psrson{age:12,sex:1}</span>
+<span class="err">Person{}</span>
+</pre></div>
+
+
+<p>需要注意的是，生成一个结构体，使用的不是圆括号()。而是大括号{}。</p>
+<p>第一种创建结构体的方法，参数的顺序按照我们定义结构体声明的顺序。</p>
+<p>我们还可以使用类似 json 语句的方式。来指定某个 field 的值。</p>
+<p>我们甚至不指定任何 field 的值。Go 会将没有值的变量默认为相应的“零值”。</p>
+<p><strong>小括号()是调用方法的传参，{}是生成新的结构体。</strong></p>
+<h3>访问结构体的 field</h3>
+<p>和大多数 C 系语言一样，Go 使用 . 来访问属性。</p>
+<div class="highlight"><pre><span></span><span class="err">p := Person{12,1}</span>
+<span class="err">p.age</span>
+</pre></div>
+
+
+<p>我们使用 . 来访问结构体的 age 属性。</p>
+<h3>指向结构体的指针</h3>
+<p>我们可以声明一个结构体的指针。用指针来访问结构体的属性。</p>
+<div class="highlight"><pre><span></span><span class="err">p := Person{12,1}</span>
+<span class="err">pp := &amp;p</span>
+<span class="err">pp.age</span>
+</pre></div>
+
+
+<p>正常的写法是 (*pp).age，但是这样太麻烦了，Go 允许我们缩写为 pp.age</p>
+<h2>未完待续</h2>
   </div>
 </div>
 
