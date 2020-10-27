@@ -16,7 +16,7 @@ Category: Django
 
 下载完成后，解压缩。
 
-在文件夹 Apache24 -> modules 并没有找到 mod_wsgi 的预置。下一步我们要安装下的 mod_wsgi 。
+在文件夹 Apache24 -> modules 并没有找到 mod_wsgi 的预置。下一步我们要安装下 mod_wsgi 。
 
 ### 2. 安装 mod_wsgi
 
@@ -41,9 +41,9 @@ Category: Django
 
 ~~还是同样的错误。翻看官方文档，给出了解答：~~
 
-> 官方链接：https://modwsgi.readthedocs.io/en/develop/release-notes/version-4.5.12.html
+    > 官方链接：https://modwsgi.readthedocs.io/en/develop/release-notes/version-4.5.12.html
 
-> When using pip install on Windows, in addition to looking in the directory C:\Apache24 for an Apache installation, it will now also check C:\Apache22 and C:\Apache2. It is recommended though that you use Apache 2.4. If your Apache installation is elsewhere, you can still set the MOD_WSGI_APACHE_ROOTDIR environment variable to its location. The environment variable should be set in your shell before running pip install mod_wsgi and should be set in a way that exports it to child processes run from the shell.
+    > When using pip install on Windows, in addition to looking in the directory C:\Apache24 for an Apache installation, it will now also check C:\Apache22 and C:\Apache2. It is recommended though that you use Apache 2.4. If your Apache installation is elsewhere, you can still set the MOD_WSGI_APACHE_ROOTDIR environment variable to its location. The environment variable should be set in your shell before running pip install mod_wsgi and should be set in a way that exports it to child processes run from the shell.
 
 简而言之就是，如果解压的地址不是 mod-wsgi 的默认地址，我们要在当前 shell 中设置环境变量，然后再运行 pip 安装。
 
@@ -98,8 +98,8 @@ WSGIPythonHome 表示的是 Python 环境的位置。注意这里只生成了当
     # 如果不包括主 python 环境的基础包路径，会造成 import 基础包 找不到而报错。
     # 所以还要包括主 python 环境的基础包路径。
     # 下面的配置包括三个参数：
-    # 1。项目的路径，确保 import 你的 django 项目不会报错。
-    # 2.虚拟环境下 pip 安装包的安装路径，确保安装的第三方包不会报错。
+    # 1. 项目的路径，确保 import 你的 django 项目不会报错。
+    # 2. 虚拟环境下 pip 安装包的安装路径，确保安装的第三方包不会报错。
     # 3. 主 python 的基础包路径，确保 import python 基础包不会报错。
     WSGIPythonPath "**/django_project;**/venv/Lib/site-packages;**/Python/Python36/lib"
     # 没什么解释的，就是声明 Apache 需要 wsgi.py 文件的访问权限。

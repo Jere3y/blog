@@ -105,7 +105,7 @@
 
 
 <p>下载完成后，解压缩。</p>
-<p>在文件夹 Apache24 -&gt; modules 并没有找到 mod_wsgi 的预置。下一步我们要安装下的 mod_wsgi 。</p>
+<p>在文件夹 Apache24 -&gt; modules 并没有找到 mod_wsgi 的预置。下一步我们要安装下 mod_wsgi 。</p>
 <h3>2. 安装 mod_wsgi</h3>
 <div class="highlight"><pre><span></span><span class="err">pip install mod-wsgi</span>
 </pre></div>
@@ -132,10 +132,12 @@
 
 
 <p>~~还是同样的错误。翻看官方文档，给出了解答：~~</p>
-<blockquote>
-<p>官方链接：https://modwsgi.readthedocs.io/en/develop/release-notes/version-4.5.12.html</p>
-<p>When using pip install on Windows, in addition to looking in the directory C:\Apache24 for an Apache installation, it will now also check C:\Apache22 and C:\Apache2. It is recommended though that you use Apache 2.4. If your Apache installation is elsewhere, you can still set the MOD_WSGI_APACHE_ROOTDIR environment variable to its location. The environment variable should be set in your shell before running pip install mod_wsgi and should be set in a way that exports it to child processes run from the shell.</p>
-</blockquote>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="err">官方链接：</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">modwsgi</span><span class="p">.</span><span class="n">readthedocs</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">develop</span><span class="o">/</span><span class="n">release</span><span class="o">-</span><span class="n">notes</span><span class="o">/</span><span class="k">version</span><span class="o">-</span><span class="mi">4</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="n">html</span>
+
+<span class="o">&gt;</span> <span class="k">When</span> <span class="k">using</span> <span class="n">pip</span> <span class="n">install</span> <span class="k">on</span> <span class="n">Windows</span><span class="p">,</span> <span class="k">in</span> <span class="n">addition</span> <span class="k">to</span> <span class="n">looking</span> <span class="k">in</span> <span class="n">the</span> <span class="n">directory</span> <span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Apache24</span> <span class="k">for</span> <span class="n">an</span> <span class="n">Apache</span> <span class="n">installation</span><span class="p">,</span> <span class="n">it</span> <span class="n">will</span> <span class="n">now</span> <span class="n">also</span> <span class="k">check</span> <span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Apache22</span> <span class="k">and</span> <span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Apache2</span><span class="p">.</span> <span class="n">It</span> <span class="k">is</span> <span class="n">recommended</span> <span class="n">though</span> <span class="n">that</span> <span class="n">you</span> <span class="n">use</span> <span class="n">Apache</span> <span class="mi">2</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span> <span class="k">If</span> <span class="n">your</span> <span class="n">Apache</span> <span class="n">installation</span> <span class="k">is</span> <span class="n">elsewhere</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">still</span> <span class="k">set</span> <span class="n">the</span> <span class="n">MOD_WSGI_APACHE_ROOTDIR</span> <span class="n">environment</span> <span class="k">variable</span> <span class="k">to</span> <span class="n">its</span> <span class="k">location</span><span class="p">.</span> <span class="n">The</span> <span class="n">environment</span> <span class="k">variable</span> <span class="n">should</span> <span class="n">be</span> <span class="k">set</span> <span class="k">in</span> <span class="n">your</span> <span class="n">shell</span> <span class="k">before</span> <span class="n">running</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mod_wsgi</span> <span class="k">and</span> <span class="n">should</span> <span class="n">be</span> <span class="k">set</span> <span class="k">in</span> <span class="n">a</span> <span class="n">way</span> <span class="n">that</span> <span class="n">exports</span> <span class="n">it</span> <span class="k">to</span> <span class="n">child</span> <span class="n">processes</span> <span class="n">run</span> <span class="k">from</span> <span class="n">the</span> <span class="n">shell</span><span class="p">.</span>
+</pre></div>
+
+
 <p>简而言之就是，如果解压的地址不是 mod-wsgi 的默认地址，我们要在当前 shell 中设置环境变量，然后再运行 pip 安装。</p>
 <p>我们执行：</p>
 <div class="highlight"><pre><span></span><span class="err"># 注意设置到你解压的 apache 文件夹的位置</span>
@@ -183,8 +185,8 @@
 <span class="c1"># 如果不包括主 python 环境的基础包路径，会造成 import 基础包 找不到而报错。</span>
 <span class="c1"># 所以还要包括主 python 环境的基础包路径。</span>
 <span class="c1"># 下面的配置包括三个参数：</span>
-<span class="c1"># 1。项目的路径，确保 import 你的 django 项目不会报错。</span>
-<span class="c1"># 2.虚拟环境下 pip 安装包的安装路径，确保安装的第三方包不会报错。</span>
+<span class="c1"># 1. 项目的路径，确保 import 你的 django 项目不会报错。</span>
+<span class="c1"># 2. 虚拟环境下 pip 安装包的安装路径，确保安装的第三方包不会报错。</span>
 <span class="c1"># 3. 主 python 的基础包路径，确保 import python 基础包不会报错。</span>
 <span class="n">WSGIPythonPath</span> <span class="s2">&quot;**/django_project;**/venv/Lib/site-packages;**/Python/Python36/lib&quot;</span>
 <span class="c1"># 没什么解释的，就是声明 Apache 需要 wsgi.py 文件的访问权限。</span>
