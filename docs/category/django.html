@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>无涯日记 — Articles avec le mot clé « 信息安全 »</title>
+  <title>无涯日记 — «Django» 中的所有文章</title>
   <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -34,7 +34,7 @@
   <h4>文章分类</h4>
   <ul class="nav flex-column">
     <li class="nav-item"><a class="nav-link" href="/category/dart.html">Dart</a></li>
-    <li class="nav-item"><a class="nav-link" href="/category/django.html">Django</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/django.html">Django</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/golang.html">Golang</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
     <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
@@ -54,40 +54,47 @@
 <div class="card">
   <div class="card-header">
     <h1 class="card-title">
-      <a href="/liao-jie-qian-ming-he-jia-mi.html" title="«了解签名和加密»">
-        了解签名和加密
+      <a href="/windows-huan-jing-xia-django-apache-mod_wsgi-bu-shu.html" title="«Windows 环境下 Django + Apache + mod_wsgi 部署»">
+        Windows 环境下 Django + Apache + mod_wsgi 部署
       </a>
     </h1>
     <div class="meta">
 <!-- includes/article_meta.html -->
-<p class="small text-muted" style="margin-bottom: 0">发布时间：2019-12-05 15:15:27</p>
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-10-25 17:04:41</p>
 <p class="small text-muted" style="margin-bottom: 0">
-  分类：<a href="/category/qi-ta.html">其他</a>
+  分类：<a href="/category/django.html">Django</a>
 </p>
 <p class="small text-muted" style="margin-bottom: 0">作者：<a
     href="/author/tian-yu.html">天宇</a></p>
-<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/jia-mi.html">加密</a>,   <a href="/tag/qian-ming.html">签名</a>,   <a href="/tag/ha-xi-suan-fa.html">哈希算法</a>,   <a href="/tag/xin-xi-an-quan.html">信息安全</a></p>    </div>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/django.html">Django</a></p>    </div>
   </div>
   <div class="card-body">
-    <h2>总结</h2>
-<p>用一句话来解释签名和加密。</p>
-<ul>
-<li>签名：确定发件人、避免信息在传输过程中内容被篡改。</li>
-<li>加密：避免信息在传输过程中被第三方窃取到内容。</li>
-</ul>
-<p>假设 A 给 B 发一条信息。B 可以根据签名，来判断这条信息是否来源于 A？是否是完整并且没有被被篡改？为了防止信息的内容被第三方窃取，A 和 B 可以约定一个只有他们自己可以看懂的加密方式，对信息进行加密，防止窃取。</p>
-<h2>签名</h2>
-<p>一个例子，A 要给 B 发一封电子邮件。</p>
-<p>下面开始思考。</p>
-<ol>
-<li>B 应该如何判断这封电子邮件是 A 发来的？</li>
-<li>如何保证 A 发送的信息没有被篡改过？</li>
-</ol>
-<p>为了解决问题 1，A 在信息中签上自己的名字，B 熟知 A 的笔迹，可以判断是否是 A 发过来的信息。</p>
-<p>但是上面的方案 …</p>
+    <h2>环境准备-安装</h2>
+<h3>1. Windows 下 Apache 下载地址</h3>
+<div class="highlight"><pre><span></span><span class="c">https://www.apachelounge.com/download/</span>
+</pre></div>
+
+
+<p>我们下载最新版本的 Apache，本文完成时最新的文件为： </p>
+<div class="highlight"><pre><span></span><span class="err">httpd-2.4.46-win64-VS16.zip</span>
+</pre></div>
+
+
+<p>下载完成后，解压缩。</p>
+<p>在文件夹 Apache24 -&gt; modules 并没有找到 mod_wsgi 的预置。下一步我们要安装下的 mod_wsgi 。</p>
+<h3>2. 安装 mod_wsgi</h3>
+<div class="highlight"><pre><span></span><span class="err">pip install mod-wsgi</span>
+</pre></div>
+
+
+<blockquote>
+<p>https://pypi.org/project/mod-wsgi/</p>
+</blockquote>
+<p>可能报错提示：</p>
+<div class="highlight"><pre><span></span><span class="n">RuntimeError</span><span class="o">:</span> <span class="n">No</span> <span class="n">Apache</span> <span class="n">installation</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span><span class="o">.</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">MOD_WSGI_APACHE_ROOTDIR …</span></pre></div>
   </div>
   <div class="card-footer text-right">
-    <a class="card-link" href="/liao-jie-qian-ming-he-jia-mi.html">查看全文</a>
+    <a class="card-link" href="/windows-huan-jing-xia-django-apache-mod_wsgi-bu-shu.html">查看全文</a>
   </div>
 </div>
 <div style="height: 2em;"></div>

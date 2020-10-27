@@ -1,6 +1,6 @@
 title: Windows 环境下 Django + Apache + mod_wsgi 部署
 date: 2020-10-25 17:04:41
-tags: uWSGI Django
+tags: Django
 Category: Django
 
 
@@ -95,9 +95,12 @@ WSGIPythonHome 表示的是 Python 环境的位置。注意这里只生成了当
     # WSGIPythonPath 确保你的项目包能从 Python path 导入；换句话说， import mysite 能正常工作。
     # 注意：如果使用了 python -m venv venv 生成虚拟环境，
     # 因为 python 基础包不会复制过来，虚拟环境使用的是主 python 的基础包。
-    # 但是 apache 在该配置下找报，如果不包括主 python 环境的基础包路径，会造成 import 基础包找不到而报错。
+    # 如果不包括主 python 环境的基础包路径，会造成 import 基础包 找不到而报错。
     # 所以还要包括主 python 环境的基础包路径。
-    # 下面的配置包括三个参数，1。项目的路径。2.虚拟环境下 pip 安装包的安装路径。3. 主 python 的基础包路径。
+    # 下面的配置包括三个参数：
+    # 1。项目的路径，确保 import 你的 django 项目不会报错。
+    # 2.虚拟环境下 pip 安装包的安装路径，确保安装的第三方包不会报错。
+    # 3. 主 python 的基础包路径，确保 import python 基础包不会报错。
     WSGIPythonPath "**/django_project;**/venv/Lib/site-packages;**/Python/Python36/lib"
     # 没什么解释的，就是声明 Apache 需要 wsgi.py 文件的访问权限。
     <Directory **/django_project/django_project>

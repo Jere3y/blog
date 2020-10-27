@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Windows 环境下 Django + Apache + mod_wsgi 部署 — 无涯日记</title>
+  <!--[if lte IE 8]><script type="text/javascript" src="/theme/js/html5shiv.js"></script><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<meta name="author" content="天宇" />
+<meta name="keywords" content="Django" />
+<link href="https://apps.bdimg.com/libs/highlight.js/9.1.0/styles/monokai-sublime.min.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  $(function (e) {
+    $("table").attr("class", "table table-bordered small");
+    $("blockquote").attr("class", "blockquote small");
+    $('pre').each(function (i, block) {
+      hljs.highlightBlock(block);
+    });
+    $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:0em;font-size:16px;' href='#'>" + '目录' + "</a>");
+    $("#content").children().each(function (index, element) {
+      var tagName = $(this).get(0).tagName;
+      if (tagName.substr(0, 1).toUpperCase() == "H") {
+        var contentH = $(this).html();//获取内容
+        var markid = "mark-" + tagName + "-" + index.toString();
+        $(this).attr("id", markid);//为当前h标签设置id
+        let spaceSize = parseInt(tagName.substr(1, 2)) - 2;
+        $("#mulu").append("<a class='list-group-item list-group-item-action' style='margin-left:" + spaceSize + "em;font-size:14px;' href='#" + markid + "'>" + contentH + "</a>");//在目标DIV中添加内容   
+      }
+    });
+  });
+</script>
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h1>无涯日记</h1>
+    <p>生有涯，学无涯！</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2"><!-- begin includes/sidebar.html -->
+<nav>
+  <h4>页面</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/index.html">首页</a></li>
+    <li class="nav-item"><a class="nav-link" href="/categories.html">文章分类</a></li>
+    <li class="nav-item"><a class="nav-link" href="/archives.html">归档</a></li>
+    <li class="nav-item"><a class="nav-link" href="/tags.html">标签</a></li>
+  </ul>
+</nav>
+
+<nav>
+  <h4>文章分类</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item"><a class="nav-link" href="/category/dart.html">Dart</a></li>
+    <li class="nav-item" class="active" ><a class="nav-link" href="/category/django.html">Django</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/golang.html">Golang</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/python.html">Python</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/qi-ta.html">其他</a></li>
+    <li class="nav-item"><a class="nav-link" href="/category/web.html">Web</a></li>
+  </ul>
+</nav>
+
+<nav>
+  <h4>链接</h4>
+  <ul  class="nav flex-column">
+    <!-- <li class="nav-item"><a class="nav-link" href="/skill.html">标签</a></li> -->
+  </ul>
+</nav>
+<!-- end includes/sidebar.html --></div>
+      <div class="col-sm-8">
+        <article class="post" id="page-main" role="main">
+<div style="margin-bottom: 2em;">
+  <div>
+    <h1 id="title">
+        Windows 环境下 Django + Apache + mod_wsgi 部署
+    </h1>
+    <div class="meta">
+<!-- includes/article_meta.html -->
+<p class="small text-muted" style="margin-bottom: 0">发布时间：2020-10-25 17:04:41</p>
+<p class="small text-muted" style="margin-bottom: 0">
+  分类：<a href="/category/django.html">Django</a>
+</p>
+<p class="small text-muted" style="margin-bottom: 0">作者：<a
+    href="/author/tian-yu.html">天宇</a></p>
+<p class="small text-muted" style="margin-bottom: 0">  标签：  <a href="/tag/django.html">Django</a></p>    </div>
+  </div>
+  <div id="content">
+    <h2>环境准备-安装</h2>
+<h3>1. Windows 下 Apache 下载地址</h3>
+<div class="highlight"><pre><span></span><span class="c">https://www.apachelounge.com/download/</span>
+</pre></div>
+
+
+<p>我们下载最新版本的 Apache，本文完成时最新的文件为： </p>
+<div class="highlight"><pre><span></span><span class="err">httpd-2.4.46-win64-VS16.zip</span>
+</pre></div>
+
+
+<p>下载完成后，解压缩。</p>
+<p>在文件夹 Apache24 -&gt; modules 并没有找到 mod_wsgi 的预置。下一步我们要安装下的 mod_wsgi 。</p>
+<h3>2. 安装 mod_wsgi</h3>
+<div class="highlight"><pre><span></span><span class="err">pip install mod-wsgi</span>
+</pre></div>
+
+
+<blockquote>
+<p>https://pypi.org/project/mod-wsgi/</p>
+</blockquote>
+<p>可能报错提示：</p>
+<div class="highlight"><pre><span></span><span class="n">RuntimeError</span><span class="o">:</span> <span class="n">No</span> <span class="n">Apache</span> <span class="n">installation</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span><span class="o">.</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">MOD_WSGI_APACHE_ROOTDIR</span> <span class="n">environment</span> <span class="n">to</span> <span class="n">its</span> <span class="n">location</span>
+</pre></div>
+
+
+<p>意思是：我们没有在环境变量中设置 MOD_WSGI_APACHE_ROOTDIR ,所以安装程序找不到 Apache 的位置。</p>
+<p>~~我们设置环境变量：~~</p>
+<div class="highlight"><pre><span></span><span class="err">变量名：MOD_WSGI_APACHE_ROOTDIR</span>
+<span class="err">变量值：我们解压的 apache 位置</span>
+</pre></div>
+
+
+<p>~~设置完成后，我们重新执行安装：~~</p>
+<div class="highlight"><pre><span></span><span class="err">pip install mod-wsgi</span>
+</pre></div>
+
+
+<p>~~还是同样的错误。翻看官方文档，给出了解答：~~</p>
+<blockquote>
+<p>官方链接：https://modwsgi.readthedocs.io/en/develop/release-notes/version-4.5.12.html</p>
+<p>When using pip install on Windows, in addition to looking in the directory C:\Apache24 for an Apache installation, it will now also check C:\Apache22 and C:\Apache2. It is recommended though that you use Apache 2.4. If your Apache installation is elsewhere, you can still set the MOD_WSGI_APACHE_ROOTDIR environment variable to its location. The environment variable should be set in your shell before running pip install mod_wsgi and should be set in a way that exports it to child processes run from the shell.</p>
+</blockquote>
+<p>简而言之就是，如果解压的地址不是 mod-wsgi 的默认地址，我们要在当前 shell 中设置环境变量，然后再运行 pip 安装。</p>
+<p>我们执行：</p>
+<div class="highlight"><pre><span></span><span class="err"># 注意设置到你解压的 apache 文件夹的位置</span>
+<span class="err">set &quot;MOD_WSGI_APACHE_ROOTDIR=F:\Apache24&quot; </span>
+<span class="err"># 执行安装</span>
+<span class="err">pip install mod-wsgi</span>
+</pre></div>
+
+
+<p>终于安装成功了。</p>
+<h3>3. 获取 mod_wsgi 配置</h3>
+<p>我们在命令行中运行：</p>
+<div class="highlight"><pre><span></span><span class="err">mod_wsgi-express module-config</span>
+</pre></div>
+
+
+<p>输出：</p>
+<div class="highlight"><pre><span></span><span class="err">LoadModule wsgi_module &quot;***/venv/lib/site-packages/mod_wsgi/server/mod_wsgi.cp36-win_amd64.pyd&quot;</span>
+<span class="err">WSGIPythonHome &quot;**/venv&quot;</span>
+</pre></div>
+
+
+<p>可以看到命令行输出 Apache 的配置参数，我们复制这些内容到 Apache 的配置文件 httpd.conf 中。</p>
+<p>配置解释：</p>
+<p>LoadModule 表示 Apache 载入 wsgi_module 功能，后面的参数是该 module 的路径。</p>
+<p>WSGIPythonHome 表示的是 Python 环境的位置。注意这里只生成了当前环境的位置，如果使用的是 python -m venv 那么需要加上主 python 的安装位置。</p>
+<h3>4. 配置 httpd.conf</h3>
+<p>如果使用 venv 这里会出现找不到“包”的错误，下面完整的配置以及解释：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 表示 Apache 载入 wsgi_module 功能，后面的参数是该 module 的路径，通过 mod_wsgi-express module-config 可以获取到。</span>
+<span class="n">LoadModule</span> <span class="n">wsgi_module</span> <span class="s2">&quot;**/venv/lib/site-packages/mod_wsgi/server/mod_wsgi.cp36-win_amd64.pyd&quot;</span>
+
+<span class="c1"># WSGIPythonHome 表示的是 Python 环境的位置，</span>
+<span class="c1"># 如果我们没有使用 venv ，直接配置 Python 的安装位置即可。</span>
+<span class="c1"># 如果使用了 python -m venv venv 生成了 venv，我们需要配置主 Pthon 执行程序和 venv 地址两个。</span>
+<span class="n">WSGIPythonHome</span> <span class="s2">&quot;**/venv;**/Python/Python36&quot;</span>
+
+<span class="c1"># WSGIScriptAlias 表示将 / 路径下的访问转到 wsgi 处理。</span>
+<span class="c1"># 第一个代表路径 / 表示根路径</span>
+<span class="c1"># 第二个参数是项目的 wsgi.py 文件的地址</span>
+<span class="n">WSGIScriptAlias</span> <span class="o">/</span> <span class="o">**/</span><span class="n">django_project</span><span class="o">/</span><span class="n">django_project</span><span class="o">/</span><span class="n">wsgi</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># WSGIPythonPath 确保你的项目包能从 Python path 导入；换句话说， import mysite 能正常工作。</span>
+<span class="c1"># 注意：如果使用了 python -m venv venv 生成虚拟环境，</span>
+<span class="c1"># 因为 python 基础包不会复制过来，虚拟环境使用的是主 python 的基础包。</span>
+<span class="c1"># 如果不包括主 python 环境的基础包路径，会造成 import 基础包 找不到而报错。</span>
+<span class="c1"># 所以还要包括主 python 环境的基础包路径。</span>
+<span class="c1"># 下面的配置包括三个参数：</span>
+<span class="c1"># 1。项目的路径，确保 import 你的 django 项目不会报错。</span>
+<span class="c1"># 2.虚拟环境下 pip 安装包的安装路径，确保安装的第三方包不会报错。</span>
+<span class="c1"># 3. 主 python 的基础包路径，确保 import python 基础包不会报错。</span>
+<span class="n">WSGIPythonPath</span> <span class="s2">&quot;**/django_project;**/venv/Lib/site-packages;**/Python/Python36/lib&quot;</span>
+<span class="c1"># 没什么解释的，就是声明 Apache 需要 wsgi.py 文件的访问权限。</span>
+<span class="o">&lt;</span><span class="n">Directory</span> <span class="o">**/</span><span class="n">django_project</span><span class="o">/</span><span class="n">django_project</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">Files</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">py</span><span class="o">&gt;</span>
+    <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+<span class="o">&lt;/</span><span class="n">Files</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h2>运行</h2>
+<p>我们运行：</p>
+<div class="highlight"><pre><span></span><span class="err">httpd.exe -t</span>
+</pre></div>
+
+
+<p>检测配置文件是否正确。</p>
+<p>运行：</p>
+<div class="highlight"><pre><span></span><span class="err">httpd.exe -k install</span>
+</pre></div>
+
+
+<p>将 httpd 当作服务注册。可以在 services.msc 中管理服务的运行。</p>
+<p>使用：</p>
+<div class="highlight"><pre><span></span><span class="err">httpd.exe -h</span>
+</pre></div>
+
+
+<p>查看其他帮助吧</p>
+<h2>参考</h2>
+<ol>
+<li><a href="https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/modwsgi/">Django 官方文档</a></li>
+<li><a href="https://pypi.org/project/mod-wsgi/">mod-wsgi 文档</a></li>
+<li><a href="https://www.apachelounge.com/download/">windows Apache 下载地址</a></li>
+</ol>
+  </div>
+</div>
+
+
+
+
+        </article>
+      </div>
+      <div class="col-sm-2">
+        <div class="list-group sticky-top" id="mulu" style="margin-bottom: 2em;margin-top:2em">
+          <!-- 这个是目录 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzkxNi8yNDQxMw==">
+        <script type="text/javascript">
+          (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+          })(document, 'script');
+        </script>
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+  </div>
+</div>
+
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <div class="mx-auto">
+      <footer id="page-foot">
+        <script
+          type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1278270548'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s9.cnzz.com/z_stat.php%3Fid%3D1278270548%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        <p class="small text-muted" style="margin-top: 2px;margin-bottom: 0;">
+          ©2016-2019 wuyariji.com 无涯日记，所有文章遵循 WTFPL </p>
+      </footer>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
